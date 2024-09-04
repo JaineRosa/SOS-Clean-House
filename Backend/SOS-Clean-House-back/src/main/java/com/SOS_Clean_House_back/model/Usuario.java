@@ -25,7 +25,6 @@ public class Usuario {
     private Integer telefone;
     private Date dataNascimento;
     private String cpf;
-    private String sexo;
     private String senha;
     private String confirmarSenha;
     private byte fotoPerfil;
