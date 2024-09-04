@@ -9,13 +9,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Data @Builder
-public class Cliente {
+public class ClienteCartao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private  Integer Id;
 
-    private String sexo;
+    private  String nomeCompleto;
+    private  Integer numeroCartao;
+    private Date dataValidade;
+    private  Integer cvv;
+    private  String cpf;
+    private  Cliente cliente;
+
 }
