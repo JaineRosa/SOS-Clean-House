@@ -9,19 +9,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Data @Builder
-public class Servico {
+public class AtividadesDesenvolvidas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer Id;
-
-    private Integer valorDiario4H;
-    private Integer valorDiario8H;
-    private Integer tempoReserva;
-    private Horario horario;
-    private AtividadesDesenvolvidas atividadeDesenvolvidas;
-    private TipoServico tipoServico;
+    private  Integer id;
+    private List<String> atividades;
+    private Prestador prestador;
 
 }
