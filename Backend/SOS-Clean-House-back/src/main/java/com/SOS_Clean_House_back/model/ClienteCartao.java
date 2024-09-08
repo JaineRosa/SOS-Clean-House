@@ -1,9 +1,6 @@
 package com.SOS_Clean_House_back.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +21,8 @@ public class ClienteCartao {
     private Date dataValidade;
     private  Integer cvv;
     private  String cpf;
-    private  Cliente cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 }

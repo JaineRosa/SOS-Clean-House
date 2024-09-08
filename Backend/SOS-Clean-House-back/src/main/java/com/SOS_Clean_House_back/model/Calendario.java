@@ -1,10 +1,6 @@
 package com.SOS_Clean_House_back.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,10 +18,13 @@ public class Calendario {
 
     private LocalDateTime data;
     private Boolean status;
-    private Servico servicoIntegral;
-    private Servico servicoMeioManha;
-    private Servico servicoMeioTarde;
+//    private Servico servicoIntegral;
+//    private Servico servicoMeioManha;
+//    private Servico servicoMeioTarde;
     private Integer taxaExtraMeia;
+
+    @ManyToOne
+    @JoinColumn(name = "prestador_id")
     private Prestador prestador;
 
 }

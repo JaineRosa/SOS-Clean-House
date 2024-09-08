@@ -1,9 +1,6 @@
 package com.SOS_Clean_House_back.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,18 +9,31 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor @NoArgsConstructor @Data @Builder
-public class Prestador {
+@AllArgsConstructor @NoArgsConstructor @Data
+public class Prestador extends Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private Integer tempoExperiencia;
-    private byte antecedentesCriminais;
-    private byte foto;
-    private byte documentos;
+    private byte[] antecedentesCriminais;
+    private byte[] foto;
+    private byte[] documentos;
     private String sobreMim;
-    private List<String> horarios;
 
+    @OneToMany(mappedBy = "prestador", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Agendamento> agendamentos;
+
+    @OneToMany(mappedBy = "prestador", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AtividadesDesenvolvidas> atividadesDesenvolvidas;
+
+    @OneToMany(mappedBy = "prestador", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Calendario> calendarios;
+
+    @OneToOne(mappedBy = "prestador", cascade = CascadeType.ALL)
+    private ContaPrestador contaPrestador;
+
+    @OneToMany(mappedBy = "prestador", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Horario> horarios;
 }

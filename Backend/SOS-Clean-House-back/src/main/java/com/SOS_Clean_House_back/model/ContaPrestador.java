@@ -1,9 +1,6 @@
 package com.SOS_Clean_House_back.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +20,9 @@ public class ContaPrestador {
     private Integer conta;
     private String cnpj;
     private String cpf;
+
+    @OneToOne
+    @JoinColumn(name = "prestador_id")
     private Prestador prestador;
 
 }
