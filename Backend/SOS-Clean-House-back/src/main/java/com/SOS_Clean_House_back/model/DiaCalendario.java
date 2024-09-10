@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Data @Builder
-public class Calendario {
+public class DiaCalendario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
