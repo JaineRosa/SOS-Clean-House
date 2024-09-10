@@ -17,10 +17,10 @@ public class Calendario {
     private Integer id;
 
     private LocalDateTime data;
-    private Boolean status;
-//    private Servico servicoIntegral;
-//    private Servico servicoMeioManha;
-//    private Servico servicoMeioTarde;
+    private Boolean isDisponibilidade;
+    private Boolean isIntegral;
+    private Boolean isMeioManha;
+    private Boolean isMeioTarde;
     private Integer taxaExtraMeia;
 
     @ManyToOne
