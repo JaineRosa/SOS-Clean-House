@@ -2,7 +2,6 @@ package com.SOS_Clean_House_back.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -29,7 +28,7 @@ public class Prestador extends Usuario {
     private List<AtividadesDesenvolvidas> atividadesDesenvolvidas;
 
     @OneToMany(mappedBy = "prestador", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Calendario> calendarios;
+    private List<DiaCalendario> diaCalendarios;
 
     @OneToOne(mappedBy = "prestador", cascade = CascadeType.ALL)
     private ContaPrestador contaPrestador;
