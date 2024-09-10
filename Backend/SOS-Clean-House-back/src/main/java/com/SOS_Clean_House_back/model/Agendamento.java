@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,8 +17,11 @@ public class Agendamento {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Boolean status;
-    private Date dataservico;
     private LocalDateTime dataAgendamento;
+
+
+    @OneToOne
+    private DiaCalendario dataservico;
 
     @OneToOne
     @JoinColumn(name = "endereco_servico_id")
