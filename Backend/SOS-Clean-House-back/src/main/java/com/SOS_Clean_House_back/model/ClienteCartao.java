@@ -21,6 +21,7 @@ public class ClienteCartao {
     private Date dataValidade;
     private  Integer cvv;
     private  String cpf;
+    private  Boolean favorito;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
