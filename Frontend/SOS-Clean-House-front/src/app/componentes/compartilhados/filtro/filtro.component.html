@@ -1,0 +1,47 @@
+<nav>
+  <div class=" search-container ">
+    <div class= " search-item">
+      <input type="text" id="cleaningTypeInput" class="form-control" placeholder="Tipo de Limpeza?" data-bs-toggle="modal" data-bs-target="#tipoLimpezaModal" readonly>
+    </div>
+    <div class=" search-item calendar ">
+      <input type="text" class="calendar-input" placeholder="Quando?" (focus)="onFocus($event)" (blur)="onBlur($event)">
+    </div>
+    <div class="  search-item">
+      <input type="text" class="menor" id="horarioTypeInput" class="form-control" placeholder="Horário?" data-bs-toggle="modal" data-bs-target="#horarioLimpezaModal" readonly>
+    </div>
+    <div class=" search-item">
+      <input type="text" placeholder="Bairro?"id="barirroTypeInput"  class="form-control" data-bs-toggle="modal" data-bs-target="#bairroLimpezaModal" readonly>
+    </div>
+    <div>
+      <button class=" search-icon"> <i class="bi bi-search" routerLink="/pesquisar"></i></button>
+    </div>
+  </div>
+  </nav>
+
+ <!-- Modal -->
+<div class="modal fade" id="tipoLimpezaModal" tabindex="-1" role="dialog" aria-labelledby="tipoLimpezaModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- Passando a função de seleção para o componente tipo-limpeza -->
+      <app-tipo-limpeza (selectedOption)="onSelectedOption({ type: 'cleaning', value: $event })"></app-tipo-limpeza>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="horarioLimpezaModal" tabindex="-1" role="dialog" aria-labelledby="horarioLimpezaModallLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class=" horario modal-content ">
+      <!-- Passando a função de seleção para o componente tipo-limpeza -->
+      <app-horario (selectedOption)="onSelectedOption({ type: 'horario', value: $event })"></app-horario>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para Bairro -->
+<div class="modal fade" id="bairroLimpezaModal" tabindex="-1" role="dialog" aria-labelledby="bairroLimpezaModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="bairro modal-content">
+      <app-bairro (selectedOptions)="onBairroSelected($event)"></app-bairro>
+    </div>
+  </div>
+</div>

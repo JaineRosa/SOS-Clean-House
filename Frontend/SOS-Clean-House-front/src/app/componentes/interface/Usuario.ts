@@ -7,6 +7,7 @@ export interface Usuario{
     telefone: string;
     dataNascimento: Date;
     cpf: string;
+    email: string
     senha: string;
     confirmarSenha: string;
     fotoPerfil: Blob;

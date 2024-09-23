@@ -1,0 +1,57 @@
+
+
+header {
+    .logo {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .end {
+        padding: 30px;
+        display: flex;
+        justify-content: end;
+        align-items: end;
+    }
+
+    .menu {
+        background-color: white;
+        width: 150px;
+        height: 65px;
+        border-radius: 30px;
+        border: solid 2px #E0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    h2 {
+        
+        padding-left: 8px;
+        width: 150px;
+        text-align: center;
+        color: #0A1EA6;
+    }
+
+    div i {
+        font-size: 48px;
+        color: #E0E0E0;
+    }
+
+    .modal-content{
+    margin-left: 150px;
+    width: 280px;
+    background-color: #cdcdcd;
+    border-radius: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    }
+  
+    #exampleModal{
+        position: fixed;
+        margin-left: 490px;
+        margin-top: 110px;
+    }
+}

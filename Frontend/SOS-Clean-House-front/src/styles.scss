@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+/*$Primary-Color: #0A1EA6;
+$secondary-color:  #E0E0E0;
+
+$text-color: black;
+$text-color-dark: #0A1EA6;
+$text-color-light: #fff; 
+
+$background-color: #cdcdcd; 
+$background-color-dark: #0A1EA6; 
+$background-color-light: #E0E0E0; 
+
+$BorderRadius: 32px;*/
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    padding: 40px 80px;
+}
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');

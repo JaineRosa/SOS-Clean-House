@@ -1,0 +1,85 @@
+<div class="cadastroPerfil">
+    <div class="container mt-5">
+        <h2>Cadastro:</h2>
+        <form>
+            <div class="form-row">
+                <div class="col-6">
+                    <div class="form-group col-12">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" class="form-control rounded-input" id="nome" name="nome">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control rounded-input" id="email" name="email">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="endereco">Endereço:</label>
+                        <input type="text" class="form-control rounded-input" id="endereco" name="endereco">
+                    </div>
+
+                </div>
+                <div class="foto">
+                    <div class="col-6">
+                        <div class="col-12">
+                            <img src="../../../../assets/img/perfil.jpg" alt="" height="200px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" class="form-control rounded-input" id="telefone" name="telefone">
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label for="data-nascimento">Data de Nascimento:</label>
+                    <input type="date" class="form-control rounded-input" id="data-nascimento" name="data-nascimento">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" class="form-control rounded-input" id="cpf" name="cpf">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="sexo">Sexo:</label>
+                    <input type="text" class="form-control rounded-input" id="sexo" name="sexo">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <button class="add-card-button" type="button" class="submit-button" data-bs-toggle="modal"
+                        data-bs-target="#creditCardModal">+ Cadastrar Cartão de Crédito</button>
+                </div>
+                <div class="form-group col-6">
+                    <button class="add-card-button" type="button" class="submit-button" data-bs-toggle="modal"
+                        data-bs-target="#creditCardModal">Cartão Final 0000</button>
+                </div>
+                <div class="form-group col-6 ">
+                    <button type="button" class="submit-button" id="liveToastBtn">Editar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="creditCardModal" tabindex="-1" aria-labelledby="creditCardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <app-cartao-credito></app-cartao-credito>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="toast-container position-fixed top-50 start-50 translate-middle">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <button type="button" class="btn-close btn-close-white a " data-bs-dismiss="toast" aria-label="Close"></button>
+        <div class="toast-body">
+            Cadastro concluído com sucesso!
+
+        </div>
+    </div>
+</div>

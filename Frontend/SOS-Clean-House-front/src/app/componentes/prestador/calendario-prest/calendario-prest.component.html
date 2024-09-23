@@ -1,0 +1,48 @@
+<div class="display">
+
+    <div class="container">
+        <h3>Selecione uma data:</h3>
+        <ngb-datepicker (select)="onDateSelect($event)">
+            <ng-template ngbDatepickerDay="day" let-date="date">
+                <span [ngClass]="{'bg-primary text-light': isSelected(date)}">
+                    {{ date.day }}
+                </span>
+            </ng-template>
+        </ngb-datepicker>
+    </div>
+
+
+    <div class="menor">
+        <div class="card">
+            <h5 class="card-title">Sexta, 13 de julho</h5>
+
+            <div class="btn-group borda" role="group">
+                <h6 type="text" class="">Disponibilidade:</h6>
+                <button type="button" class="btn btn-primary"><i class="fas fa-times"></i></button>
+                <button type="button" class="btn btn-primary"><i class="fas fa-check"></i></button>
+            </div>
+            <div class="btn-group borda" role="group">
+                <h6 type="text" class="">4h Matutino</h6>
+                <button type="button" class="btn btn-primary"><i class="fas fa-times"></i></button>
+                <button type="button" class="btn btn-primary"><i class="fas fa-check"></i></button>
+            </div>
+            <div class="btn-group borda" role="group">
+                <h6 type="text" class="">4h Vespertino</h6>
+                <button type="button" class="btn btn-primary"><i class="fas fa-times"></i></button>
+                <button type="button" class="btn btn-primary"><i class="fas fa-check"></i></button>
+            </div>
+            <div class="btn-group borda" role="group">
+                <h6 type="text" class="">8h Horas</h6>
+                <button type="button" class="btn btn-primary"><i class="fas fa-times"></i></button>
+                <button type="button" class="btn btn-primary"><i class="fas fa-check"></i></button>
+            </div>
+
+            <div class="input-container">
+                <input type="text" id="taxa-extra" name="taxa-extra" placeholder="Taxa extra R$:">
+                <i class="fas fa-pencil-alt"></i>
+            </div>
+
+
+        </div>
+    </div>
+</div>

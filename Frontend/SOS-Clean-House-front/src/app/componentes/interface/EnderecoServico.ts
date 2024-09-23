@@ -8,6 +8,7 @@ export interface EnderecoServico {
     bairro: string;
     cidade: string;
     cep: number;
+    observacao: string;
     cliente: Cliente;
     servico: Servico;
     servicoReference: Servico;

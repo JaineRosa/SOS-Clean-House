@@ -1,0 +1,94 @@
+<div class="container">
+    <h2 class="text-center">
+        Resumo
+    </h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <img alt="Profile picture of Juliana Santos" height="150" src="../../../../assets/img/perfil.jpg"
+                    width="150" />
+                <h5 class="card-title">
+                    {{prestador.nomeCompleto}}
+                </h5>
+                <h6 class="card-subtitle mb-2">
+                    600 metros de Distância
+                </h6>
+                <h6 class="card-subtitle mb-2">
+                    {{prestador.tempoExperiencia}} anos de experiência
+                </h6>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <p>
+                    Data: 11 Fevereiro de 2024
+                </p>
+                <p>
+                    Horário Início: 7:00
+                </p>
+                <p>
+                    Horário Término: 17:00
+                </p>
+                <p>
+                    Valor: 290,00
+                </p>
+                <p>
+                    Local: Rua Sete de Setembro 123. Ap.104
+                </p>
+                <p>
+                    Observações: Lorem ipsum dolor sit amet
+                </p>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input checked class="form-check-input" id="task1" type="checkbox" />
+                        <label class="form-check-label" for="task1">
+                            Limpar a cozinha
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input checked class="form-check-input" id="task2" type="checkbox" />
+                        <label class="form-check-label" for="task2">
+                            Arrumar a Cama
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-primary btn">Iniciar Chat</button>
+                    <button type="button" class="btn btn-primary btn" data-bs-toggle="modal"
+                        data-bs-target="#CancelarModal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="CancelarModal" tabindex="-1" aria-labelledby="CancelarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cancelar</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Você tem certeza que deseja cancelar sua reserva com Juliana?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="cancelarToastBtn" (click)="showToast()" data-bs-dismiss="modal">Sim</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Toast 1-->
+<div class="toast-container position-fixed top-50 start-50 translate-middle">
+    <div id="cancelarToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <button type="button" class="btn-close btn-close-white a " data-bs-dismiss="toast" aria-label="Close"></button>
+        <div class="toast-body">
+            Reserva cancelada com sucesso!
+
+        </div>
+    </div>
+</div>

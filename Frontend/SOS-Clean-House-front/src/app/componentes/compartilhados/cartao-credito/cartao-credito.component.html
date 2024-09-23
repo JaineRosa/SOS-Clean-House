@@ -1,0 +1,33 @@
+<div class="cadastroCartao">
+  <div class="card-container">
+    <h5>Cadastrar Cartão de Crédito</h5>
+    <form (ngSubmit)="registerCreditCard()" #cardForm="ngForm">
+      <div class="form-group">
+        <label for="card-number">Número do Cartão:</label>
+        <input type="text" class="form-control" id="card-number" name="card-number" [(ngModel)]="numeroCartao" required>
+      </div>
+      <div class="form-group">
+        <label for="full-name">Nome Completo:</label>
+        <input type="text" class="form-control" id="full-name" name="full-name" [(ngModel)]="nomeCompleto" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="expiry-date">Data de Validade:</label>
+          <input type="text" class="form-control" id="expiry-date" name="expiry-date" [(ngModel)]="dataValidade" dataValidade>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="cvv">CVV:</label>
+          <input type="text" class="form-control" id="cvv" name="cvv" [(ngModel)]="cvv" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="card-cpf">CPF do Titular:</label>
+        <input type="text" class="form-control" id="card-cpf" name="card-cpf" [(ngModel)]="cpf" required>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!cardForm.form.valid"data-bs-dismiss="modal">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+</div>

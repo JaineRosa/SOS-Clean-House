@@ -1,0 +1,92 @@
+.cadastroPerfil {
+
+    .rounded-input {
+        border-radius: 20px;
+
+    }
+
+    .file-button label {
+
+        border: 1px solid #0A1EA6;
+        border-radius: 20px;
+        padding: 10px 20px;
+        margin: 12px;
+        cursor: pointer;
+        color: #0A1EA6;
+    }
+
+    .file-button label:hover {
+        background-color: #f0f0f0;
+    }
+
+    .add-card-button {
+        border: 1px solid #0A1EA6;
+        border-radius: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        color: #0A1EA6;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .add-card-button:hover {
+        background-color: #f0f0f0;
+    }
+
+    .submit-button {
+        background-color: #0A1EA6;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        text-align: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .submit-button:hover {
+        background-color: #091982;
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .form-group {
+        flex: 1;
+        /* Faz com que os grupos de formulários ocupem todo o espaço disponível */
+        margin-right: 10px;
+        /* Adiciona espaçamento entre os grupos de formulários */
+    }
+
+    .form-group:last-child {
+        margin-right: 0;
+        /* Remove a margem direita do último item */
+    }
+}
+
+
+.toast{
+    background-color: #0A1EA6;
+    color: white;
+    border-radius: 32px;
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    .toast-body{
+        text-align: center;
+        font-size: 24px;
+        color: white;
+    }
+
+   
+}
+
+    
+.btn-close{
+   margin-left: 300px;
+   margin-top: 8px;
+ }

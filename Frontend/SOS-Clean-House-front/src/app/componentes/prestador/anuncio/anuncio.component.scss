@@ -1,0 +1,20 @@
+.container {
+    max-width: 850px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 32px;
+    background-color: #fff;
+    text-align: center;
+}
+.btn-edit {
+    background-color: #0A1EA6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 32px;
+    cursor: pointer;
+}
+.btn-edit:hover {
+    background-color: #071675;
+}

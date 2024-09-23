@@ -1,0 +1,78 @@
+<div class="display">
+    <div>
+        <app-calendario></app-calendario>
+    </div>
+    <div class="container">
+
+        <div>
+            <h4>Selecione o periodo:</h4>
+            <div class="period-selector">
+                <button class="btn" [ngClass]="{'active': selectedPeriod === 'Manhã'}" (click)="selectPeriod('Manhã')">
+                    Manhã
+                </button>
+
+                <button class="btn" [ngClass]="{'active': selectedPeriod === 'Tarde'}" (click)="selectPeriod('Tarde')">
+                    Tarde
+                </button>
+
+                <button class="btn" [ngClass]="{'active': selectedPeriod === 'Integral'}"
+                    (click)="selectPeriod('Integral')">
+                    Integral
+                </button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="start-time">Horário:</label>
+            <div class="d-flex">
+                <input class="form-control me-2" id="start-time" placeholder="Início" type="text" />
+                <input class="form-control" id="end-time" placeholder="Término" type="text" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="value">Valor:</label>
+            <input class="form-control" id="value" readonly="" type="text" placeholder="R$" />
+        </div>
+
+    </div>
+</div>
+<div class="displayLarge">
+    <div class="containerLarge">
+        <div>
+            <form [formGroup]="form">
+                <div formGroupName="enderecoServico">
+                    <div class="form-group">
+                        <label for="cep">Local:</label>
+                        <div class="d-flex">
+                            <input class="form-control me-2" id="cep" placeholder="CEP" type="text"
+                                formControlName="cep" required />
+                            <input class="form-control" id="bairro" placeholder="Bairro" type="text"
+                                formControlName="bairro" required />
+                        </div>
+                        <input class="form-control mt-2" id="rua" placeholder="Rua" type="text" formControlName="rua"
+                            required />
+                        <input class="form-control mt-2" id="cidade" placeholder="Cidade" type="text"
+                            formControlName="cidade" />
+                    </div>
+                    <div class="form-group">
+                        <label for="observations">Observação para o prestador:</label>
+                        <textarea class="form-control" id="observations" rows="3"
+                            formControlName="observacao"></textarea>
+                    </div>
+                </div>
+
+                <div formArrayName="atividades" class="row">
+                    <div *ngFor="let atividade of atividades; let i = index" class="col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" [formControlName]="i"
+                                (change)="onCheckboxChange(i, $event)" />
+                            <label class="form-check-label">{{ atividade }}</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <button class="btn btn-primary button" (click)="pagar($event)">Ir para Pagamento</button>
+
+    </div>
+
+</div>

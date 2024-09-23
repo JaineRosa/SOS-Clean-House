@@ -1,0 +1,35 @@
+.footer {
+    margin-top: 80px;
+    padding: 0;
+    text-align: center;
+
+    button{
+        margin-bottom: 16px;
+        display: block;
+        border: solid 1px white;
+        background-color: white;
+        width: 400px;
+        text-align: center;
+        
+    }
+
+    .icon{
+        width: 40px;
+        display: inline-block;
+        font-size: 28px;
+        margin: 0;
+    }
+
+    .line {
+        margin-top: 40px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #e0e0e0;
+    }
+    p{
+        width: 450px;;
+        text-align: center;
+    }
+}

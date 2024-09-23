@@ -1,0 +1,105 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <ng-select
+            [items]="people"
+            [multiple]="true"
+            bindLabel="name"
+            groupBy="gender"
+            [selectableGroup]="true"
+            [closeOnSelect]="false"
+            bindValue="id"
+            [(ngModel)]="selectedPeople">
+            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{ index }}" type="checkbox" [ngModel]="item$.selected" /> {{ item.gender | uppercase }}
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                <input id="item-{{ index }}" type="checkbox" [ngModel]="item$.selected" /> {{ item.name }}
+            </ng-template>
+        </ng-select>
+        </div>
+        <div class="col-md-6">
+            <select class="custom-select">
+                <option selected>Tipos de Propriedades</option>
+                <option>Residêncial</option>
+                <option>Empresarial</option>
+                <option>Loft</option>
+                <option>Predial</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="custom-input" placeholder="Valor da diária 4h.">
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="custom-input" placeholder="Valor da diária 8h.">
+        </div>
+        <div class="col-md-6">
+            <select class="custom-select">
+                <option selected>Dias Disponíveis</option>
+                <option>Domingo</option>
+                <option>Segunda-feira</option>
+                <option>Terça-feira</option>
+                <option>Quarta-feira</option>
+                <option>Quinta-feira</option>
+                <option>Sexta-feira</option>
+                <option>Sábado</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <select class="custom-select">
+                <option selected>Tempo para a reserva</option>
+                <option>30 minutos</option>
+                <option>1 hora</option>
+                <option>2 horas</option>
+                <option>3 horas</option>
+                <option>6 horas</option>
+                <option>12 horas</option>
+                <option>24 horas</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <select class="custom-select">
+                <option selected>Horário Início</option>
+                <option>5:00</option>
+                <option>6:00</option>
+                <option>7:00</option>
+                <option>8:00</option>
+                <option>9:00</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <select class="custom-select">
+                <option selected>Horário Termino</option>
+                <option>17:00</option>
+                <option>18:00</option>
+                <option>19:00</option>
+                <option>20:00</option>
+                <option>21:00</option>
+                <option>22:00</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <select class="custom-select">
+                <option selected>Atividades Desenvolvidas</option>
+                <option>Arrumar a cama</option>
+                <option>Limpar a cozinha</option>
+                <option>Lavar roupas</option>
+                <option>Passar Roupas</option>
+                <option>Lavar cortinas</option>
+                <option>Limpar a varanda</option>
+                <option>Varrer chão</option>
+                <option>Recolher lixo</option>
+                <option>Trocar roupas de cama</option>
+                <option>Organizar armários</option>
+                <option>Limpar banheiro</option>
+                <option>Passar pano no chão</option>
+                <option>Limpar geladeira</option>
+                <option>Tirar o pó</option>
+                <option>Limpar janelas e vidros</option>
+            </select>
+        </div>
+        <div class="col-md-12 text-center mt-3">
+            <button class="btn btn-custom">Cadastrar</button>
+        </div>
+    </div>
+</div>

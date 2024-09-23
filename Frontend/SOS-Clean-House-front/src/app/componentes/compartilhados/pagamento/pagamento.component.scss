@@ -1,0 +1,54 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto 0 auto;
+    padding: 20px;
+    border-radius: 32px;
+    background-color: #fff;
+}
+
+.submit-button{
+    border: 1px solid #007bff;
+    color: #007bff;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 10px;
+}
+.submit-button:hover{
+    background-color: #007bff;
+    color: #fff;
+}
+.btn-custom {
+    border: 1px solid #007bff;
+    color: #007bff;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 10px;
+}
+.btn-custom:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+.toast{
+    background-color: #0A1EA6;
+    color: white;
+    border-radius: 32px;
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    .toast-body{
+        text-align: center;
+        font-size: 24px;
+        color: white;
+    }
+    .btn-close{
+        margin-left: 300px;
+        margin-top: 8px;
+      }
+   
+}
+
+    

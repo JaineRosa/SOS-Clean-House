@@ -15,7 +15,7 @@ import { Usuario } from '../interface/Usuario';
 })
 export class PrestadorService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { } 
 
   private apiUrl = 'http://localhost:8080/prestador'; // replace with your backend API URL
 

@@ -1,0 +1,26 @@
+<div class="perfil-login">
+    <form>
+      <div class="mb-12">
+        <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" placeholder="E-mail:" [(ngModel)]="cliente.email">
+      </div>
+      <div class="mb-12">
+        <input type="password" class="form-control" id="exampleInputPassword1" name="exampleInputPassword1" placeholder="Senha:" [(ngModel)]="cliente.senha">
+      </div>
+      
+      
+      <button type="button" class="btn-azul" (click)="entrar($event)" data-bs-dismiss="modal">Entrar</button>
+  
+      <div class="col-12">
+        <button>
+          Entrar com Facebook
+        </button>
+        <button>
+          Entrar com Google
+        </button>
+      </div>
+    </form>
+  
+  </div>
+
+
+

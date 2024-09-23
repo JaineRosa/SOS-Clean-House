@@ -11,6 +11,7 @@ export interface Prestador extends Usuario {
     antecedentesCriminais: Uint8Array; 
     foto: Uint8Array; 
     documentos: Uint8Array;
+    sobreMim: string;
   
     agendamentos: Agendamento[];
     atividadesDesenvolvidas: AtividadesDesenvolvidas[];
