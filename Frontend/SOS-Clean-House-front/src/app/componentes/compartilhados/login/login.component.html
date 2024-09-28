@@ -1,5 +1,6 @@
 <div class="perfil-login">
     <form>
+      <div *ngIf="erroLogin"><p>Usuário ou senha incorretos</p></div>
       <div class="mb-12">
         <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" placeholder="E-mail:" [(ngModel)]="cliente.email">
       </div>
@@ -8,8 +9,8 @@
       </div>
       
       
-      <button type="button" class="btn-azul" (click)="entrar($event)" data-bs-dismiss="modal">Entrar</button>
-  
+      <button type="button" class="btn-azul" (click)="realizarLogin()" data-bs-dismiss="modal">Entrar</button>
+
       <div class="col-12">
         <button>
           Entrar com Facebook
@@ -21,6 +22,4 @@
     </form>
   
   </div>
-
-
 

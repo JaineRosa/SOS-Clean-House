@@ -1,19 +1,19 @@
 import { Agendamento } from "./Agendamento";
-import { AtividadesDesenvolvidas } from "./AtividadesDesenvolvidas";
 import { EnderecoServico } from "./EnderecoServico";
 import { Horario } from "./Horario";
-import { TipoServico } from "./TipoServico";
-
+import { Prestador } from "./Prestador";
 export interface Servico {
-    id: number;
-    valorDiario4H: number;
-    valorDiario8H: number;
-    tempoReserva: number;
-  
-    horarios: Horario[];
-    agendamento: Agendamento;
-    enderecoServico: EnderecoServico;
-    tipoServico: TipoServico;
-    agendamentosRelacionados: Agendamento[];
-    atividadesDesenvolvidas: AtividadesDesenvolvidas[];
+  id: number | undefined;
+  valorDiario4H: string;
+  valorDiario8H: string;
+  tempoReserva: string;
+  observacoes: string;
+  servico: string;
+  diasDaSemana: string[];
+  atividades: string[];
+  prestador: Prestador;
+  horarios?: Horario[];
+  agendamento?: Agendamento;
+  enderecoServico?: EnderecoServico;
+  agendamentosRelacionados?: Agendamento[];
   }

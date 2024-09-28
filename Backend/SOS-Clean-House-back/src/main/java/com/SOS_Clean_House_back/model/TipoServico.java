@@ -17,9 +17,7 @@ public class TipoServico {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String tipoServico;
+        private String tipoServico;
 
-    @OneToMany(mappedBy = "tipoServico")
-    private List<Servico> servicos;
 
 }

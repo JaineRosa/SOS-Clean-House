@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 @Entity
@@ -17,7 +18,7 @@ public class ClienteCartao {
     private  Integer Id;
 
     private  String nomeCompleto;
-    private  Integer numeroCartao;
+    private BigInteger numeroCartao;
     private Date dataValidade;
     private  Integer cvv;
     private  String cpf;

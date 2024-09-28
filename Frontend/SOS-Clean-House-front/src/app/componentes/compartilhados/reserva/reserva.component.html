@@ -22,15 +22,22 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="start-time">Horário:</label>
+
             <div class="d-flex">
-                <input class="form-control me-2" id="start-time" placeholder="Início" type="text" />
-                <input class="form-control" id="end-time" placeholder="Término" type="text" />
+                <select class="form-control  me-2 custom-select"  [(ngModel)]="horario.horarioInicio">
+                    <option value="" disabled selected hidden>Selecione o Horário Início</option>
+                    <option>5:00</option>
+                    <option>6:00</option>
+                    <option>7:00</option>
+                    <option>8:00</option>
+                    <option>9:00</option>
+                </select>
+                <input class="form-control" id="end-time" placeholder="Horário Término" type="text" />
             </div>
         </div>
         <div class="form-group">
             <label for="value">Valor:</label>
-            <input class="form-control" id="value" readonly="" type="text" placeholder="R$" />
+            <input class="form-control" id="value" type="text" placeholder="R$" />
         </div>
 
     </div>
@@ -49,29 +56,30 @@
                                 formControlName="bairro" required />
                         </div>
                         <input class="form-control mt-2" id="rua" placeholder="Rua" type="text" formControlName="rua"
-                            required />
+                           required />
                         <input class="form-control mt-2" id="cidade" placeholder="Cidade" type="text"
                             formControlName="cidade" />
                     </div>
                     <div class="form-group">
                         <label for="observations">Observação para o prestador:</label>
-                        <textarea class="form-control" id="observations" rows="3"
-                            formControlName="observacao"></textarea>
+                        <textarea class="form-control" id="observations" rows="3" formControlName="observacao"
+                           ></textarea>
                     </div>
                 </div>
+
 
                 <div formArrayName="atividades" class="row">
                     <div *ngFor="let atividade of atividades; let i = index" class="col-md-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" [formControlName]="i"
-                                (change)="onCheckboxChange(i, $event)" />
-                            <label class="form-check-label">{{ atividade }}</label>
+                            <input class="form-check-input" type="checkbox" [formControlName]="i"  [id]="'atividades' + i"/>
+                            <label class="form-check-label" [for]="'atividades' + i">{{ atividade }}</label>
                         </div>
                     </div>
                 </div>
             </form>
+
         </div>
-        <button class="btn btn-primary button" (click)="pagar($event)">Ir para Pagamento</button>
+        <button type="submit" class="btn btn-primary button" (click)="saveReserva()">Ir para Pagamento</button>
 
     </div>
 

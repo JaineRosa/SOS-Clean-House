@@ -18,6 +18,7 @@ public class Cliente extends Usuario {
 
     private String sexo;
 
+
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ClienteCartao> clienteCartoes;
 

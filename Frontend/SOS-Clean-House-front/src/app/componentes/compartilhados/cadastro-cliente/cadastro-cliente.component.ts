@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import * as bootstrap from 'bootstrap';
 import { Cliente } from '../../interface/Cliente';
 import { Usuario } from '../../interface/Usuario';
+import { ClienteService } from '../../servicos/cliente.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,6 +13,20 @@ import { Usuario } from '../../interface/Usuario';
   styleUrl: './cadastro-cliente.component.scss'
 })
 export class CadastroClienteComponent implements OnInit {
+  
+
+  constructor (private clienteService: ClienteService, private router: Router) { };
+
+  saveCliente() {
+    this.clienteService.create(this.cliente).subscribe((response) => {
+      console.log(response);
+      this.router.navigate(["/tela-inicial"]);
+    }, (error) => {
+      console.error(error);
+      // show error message
+    });
+  }
+
 
   cliente: Cliente = {
     id:0,
@@ -22,7 +38,7 @@ export class CadastroClienteComponent implements OnInit {
     email: '',
     senha: '',
     confirmarSenha: '',
-    fotoPerfil: new Blob(),
+    fotoPerfil: null,
     chats: [],
     sexo: '',
     clienteCartoes:[]

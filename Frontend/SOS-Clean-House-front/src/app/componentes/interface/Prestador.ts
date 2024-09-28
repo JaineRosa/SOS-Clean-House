@@ -8,9 +8,9 @@ import { Usuario } from "./Usuario";
 export interface Prestador extends Usuario {
     id: number;
     tempoExperiencia: number;
-    antecedentesCriminais: Uint8Array; 
-    foto: Uint8Array; 
-    documentos: Uint8Array;
+    antecedentesCriminais: Uint8Array | null; 
+    foto: Uint8Array| null; 
+    documentos: Uint8Array | null;
     sobreMim: string;
   
     agendamentos: Agendamento[];

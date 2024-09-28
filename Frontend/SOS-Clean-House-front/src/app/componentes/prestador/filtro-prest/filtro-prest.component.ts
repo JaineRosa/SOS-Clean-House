@@ -8,7 +8,15 @@ import { Router } from '@angular/router';
 })
 export class FiltroPrestComponent {
   
+
   constructor(private router: Router) {}
+
+  ngOnInit(){
+    sessionStorage.setItem("user","jaine")
+  }
+  ngOnDestroy(){
+    sessionStorage.removeItem("user");
+  }
 
   hoje(event: any) {
     event.preventDefault();

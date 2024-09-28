@@ -1,38 +1,46 @@
 package com.SOS_Clean_House_back.model;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Data @Builder
+
+
 public class Servico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
-    private Integer valorDiario4H;
-    private Integer valorDiario8H;
-    private Integer tempoReserva;
+    private String valorDiario4H;
+    private String valorDiario8H;
+    private String tempoReserva;
+    private String observacoes;
+    private String servico;
+    private List<String> diasDaSemana;
+    private List<String> atividades;
 
+    @ManyToOne
+    @JoinColumn(name = "prestador_id")
+    private Prestador prestador;
+
+
+
+    @JsonIgnore
     @OneToMany(mappedBy = "servico")
     private List<Horario> horarios;
 
-    @OneToOne
+
+    @ManyToOne()
     @JoinColumn(name = "agendamento_id")
     private Agendamento agendamento;
-
-    @OneToOne
-    @JoinColumn(name = "endereco_servico_id")
-    private EnderecoServico enderecoServico;
-
-    @ManyToOne
-    @JoinColumn(name = "tipo_servico_id")
-    private TipoServico tipoServico;
 
     @ManyToMany
     @JoinTable(
@@ -42,11 +50,4 @@ public class Servico {
     )
     private List<Agendamento> agendamentosRelacionados;
 
-    @ManyToMany
-    @JoinTable(
-            name = "servico_atividades",
-            joinColumns = @JoinColumn(name = "servico_id"),
-            inverseJoinColumns = @JoinColumn(name = "atividade_id")
-    )
-    private List<AtividadesDesenvolvidas> atividadesDesenvolvidas;
 }

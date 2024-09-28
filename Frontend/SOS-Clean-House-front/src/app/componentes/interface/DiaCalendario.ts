@@ -9,4 +9,5 @@ export interface DiaCalendario {
     isMeioTarde: boolean;
     taxaExtraMeia: number;
     prestador: Prestador;
+    diasSemana: string;
   }

@@ -1,51 +1,185 @@
-<div class="container mt-5">
+<h2>Cadastro de Serviços</h2>
+<div class="wizard">
+    <div class="wizard-step" *ngIf="currentStep === 1">
+
+        <h4>Tipos de Serviços:</h4>
+        <form [formGroup]="form">
+            <div formArrayName="tiposServico" class="row">
+                <div *ngFor="let tiposServico of tiposServico; let i = index" class="col-md-6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [formControlName]="i" (change)="selecionarTipoServico($event, i)" [id]="'tiposServico' + i"/>
+                        <label class="form-check-label" [for]="'tiposServico' + i">{{ tiposServico }}</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="display">
+            <button class="btn btn-custom" style="background-color: white;" (click)="prevStep()"></button>
+            <button class="btn btn-custom" (click)="nextStep()">Próximo</button>
+        </div>
+    </div>
+
+    <div class="wizard-step" *ngIf="currentStep === 2">
+        <h4>Atividades Desenvolvidas:</h4>
+        <form [formGroup]="form">
+            <div formArrayName="atividades" class="row">
+                <div *ngFor="let atividade of atividades; let i = index" class="col-md-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [formControlName]="i"  [id]="'atividades' + i"/>
+                        <label class="form-check-label" [for]="'atividades' + i">{{ atividade }}</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="display">
+            <button class="btn btn-custom" (click)="prevStep()">Anterior</button>
+            <button class="btn btn-custom" (click)="nextStep()">Próximo</button>
+        </div>
+    </div>
+
+    <div class="wizard-step " *ngIf="currentStep === 3">
+        <h4>Valores:</h4>
+        <div class="display">
+            <div class="col-md-4">
+               
+                <input type="text" class="custom-input" placeholder="Valor da diária 4h."
+                                   [(ngModel)]="servico.valorDiario4H">
+            </div>
+            <div class="col-md-4">
+                
+                <input type="text" class="custom-input" placeholder="Valor da diária 8h."
+                [(ngModel)]="servico.valorDiario8H">
+                   
+            </div>
+        </div>
+        <div class="display">
+            <button class="btn btn-custom" (click)="prevStep()">Anterior</button>
+            <button class="btn btn-custom" (click)="nextStep()">Próximo</button>
+        </div>
+    </div>
+
+    <div class="wizard-step" *ngIf="currentStep === 4">
+        <h4>Dias disponiveis:</h4>
+        <form [formGroup]="form">
+            <div formArrayName="diasDaSemana" class="row">
+                <div *ngFor="let dia of diasDaSemana; let i = index" class="col-md-6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [formControlName]="i"   [id]="'diasDaSemana' + i"/>
+                        <label class="form-check-label" [for]="'diasDaSemana' + i">{{ dia }}</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="display">
+            <button class="btn btn-custom" (click)="prevStep()">Anterior</button>
+            <button class="btn btn-custom" (click)="nextStep()">Próximo</button>
+        </div>
+    </div>
+
+    <div class="wizard-step" *ngIf="currentStep === 5">
+    <h4>Tempo minímo para reserva:</h4>
+    <form [formGroup]="form">
+        <div formArrayName="temposReserva" class="row">
+            <div *ngFor="let tempo of temposReserva; let i = index" class="col-md-6">
+                <div class="form-check ">
+                    <input class="form-check-input" type="checkbox" [formControlName]="i"  (change)="selecionarTempoReserva($event, i)"  [id]="'temposReserva' + i"/>
+                    <label class="form-check-label" [for]="'temposReserva' + i">{{ tempo }}</label>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="display">
+        <button class="btn btn-custom" (click)="prevStep()">Anterior</button>
+        <button class="btn btn-custom" (click)="nextStep()">Próximo</button>
+    </div>
+</div>
+
+    <div class="wizard-step" *ngIf="currentStep === 6">
+        <h4>Horario de trabalho:</h4>
+        <form [formGroup]="form" class="display">
+            <div formArrayName="horarioInicio" class="row-6">
+                <div *ngFor="let inicio of horarioInicio; let i = index" class="col-md-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [formControlName]="i" [id]="'horarioInicio' + i" (change)="selecionarHorarioInicio($event, i)"/>
+                        <label class="form-check-label" [for]="'horarioInicio' + i">{{ inicio }}</label>
+                    </div>
+                </div>
+            </div>
+            <div formArrayName="horarioFim" class="row-6">
+                <div *ngFor="let fim of horarioFim; let i = index" class="col-md-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [formControlName]="i" [id]="'horarioFim' + i" (change)="selecionarHorarioFim($event, i)" />
+                        <label class="form-check-label" [for]="'horarioFim' + i">{{ fim }}</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="display">
+            <button class="btn btn-custom" (click)="prevStep()">Anterior</button>
+            <button class="btn btn-custom" (click)="finishWizard()">Finalizar</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
-            <ng-select
-            [items]="people"
-            [multiple]="true"
-            bindLabel="name"
-            groupBy="gender"
-            [selectableGroup]="true"
-            [closeOnSelect]="false"
-            bindValue="id"
-            [(ngModel)]="selectedPeople">
-            <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
-                <input id="item-{{ index }}" type="checkbox" [ngModel]="item$.selected" /> {{ item.gender | uppercase }}
-            </ng-template>
-            <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                <input id="item-{{ index }}" type="checkbox" [ngModel]="item$.selected" /> {{ item.name }}
-            </ng-template>
-        </ng-select>
+            <ng-select class="custom" [items]="tipoServico" [multiple]="true" bindLabel="tipoServico"
+                placeholder="{{ selectServico?.length ? '' : 'Tipos de Serviços' }}" [clearable]="true"
+                [hideSelected]="true" [closeOnSelect]="false" bindValue="id" [(ngModel)]="selectServico">
+
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                    <input id="item-{{ index }}" type="checkbox" [ngModel]="item$.selected" /> {{ item.tipoServico |
+                    uppercase }}
+                </ng-template>
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                    <input id="item-{{ index }}" type="checkbox" [ngModel]="item$.selected" /> {{ item.tipoServico }}
+                </ng-template>
+            </ng-select>
+        </div>
+
+        <div class="col-md-6">
+            <ng-select class="custom" [items]="atividadesDesenvolvidas" [multiple]="true" bindLabel="atividades"
+                placeholder="{{ selectAtivDesencoldidas?.length ? '' : 'Atividades Desenvolvidas' }}" [clearable]="true"
+                [hideSelected]="true" [closeOnSelect]="false" bindValue="id" [(ngModel)]="selectAtivDesencoldidas">
+
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                    <input id="item-{{ index }}" type="checkbox" [ngModel]="item$.selected" /> {{ item.atividades |
+                    uppercase }}
+                </ng-template>
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                    <input id="item-{{ index }}" type="checkbox" [ngModel]="item$.selected" /> {{ item.atividades }}
+                </ng-template>
+            </ng-select>
         </div>
         <div class="col-md-6">
-            <select class="custom-select">
-                <option selected>Tipos de Propriedades</option>
-                <option>Residêncial</option>
-                <option>Empresarial</option>
-                <option>Loft</option>
-                <option>Predial</option>
-            </select>
+            <input type="text" class="custom-input" placeholder="Valor da diária 4h."
+                [(ngModel)]="servico.valorDiario4H">
         </div>
         <div class="col-md-6">
-            <input type="text" class="custom-input" placeholder="Valor da diária 4h.">
+            <input type="text" class="custom-input" placeholder="Valor da diária 8h."
+                [(ngModel)]="servico.valorDiario8H">
         </div>
         <div class="col-md-6">
-            <input type="text" class="custom-input" placeholder="Valor da diária 8h.">
+            <ng-select class="custom" [items]="diasDisponiveis" [multiple]="true" bindLabel="id"
+                placeholder="{{ selectDia?.length ? '' : 'Dias Disponiveis' }}" [clearable]="true" [hideSelected]="true"
+                [closeOnSelect]="false" bindValue="id" [(ngModel)]="selectDia">
+
+                <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+                    <input id="item-{{ index }}" type="checkbox" [ngModel]="item$.selected" /> {{ item.id |
+                    uppercase }}
+                </ng-template>
+                <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                    <input id="item-{{ index }}" type="checkbox" [ngModel]="item$.selected" /> {{ item.id }}
+                </ng-template>
+            </ng-select>
         </div>
-        <div class="col-md-6">
-            <select class="custom-select">
-                <option selected>Dias Disponíveis</option>
-                <option>Domingo</option>
-                <option>Segunda-feira</option>
-                <option>Terça-feira</option>
-                <option>Quarta-feira</option>
-                <option>Quinta-feira</option>
-                <option>Sexta-feira</option>
-                <option>Sábado</option>
-            </select>
-        </div>
-        <div class="col-md-6">
+
+        <div class="col-md-6" [(ngModel)]="servico.tempoReserva">
             <select class="custom-select">
                 <option selected>Tempo para a reserva</option>
                 <option>30 minutos</option>
@@ -57,7 +191,7 @@
                 <option>24 horas</option>
             </select>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" [(ngModel)]="horario.horarioInicio">
             <select class="custom-select">
                 <option selected>Horário Início</option>
                 <option>5:00</option>
@@ -68,7 +202,7 @@
             </select>
         </div>
         <div class="col-md-6">
-            <select class="custom-select">
+            <select class="custom-select" [(ngModel)]="horario.horarioFim">
                 <option selected>Horário Termino</option>
                 <option>17:00</option>
                 <option>18:00</option>
@@ -78,28 +212,9 @@
                 <option>22:00</option>
             </select>
         </div>
-        <div class="col-md-12">
-            <select class="custom-select">
-                <option selected>Atividades Desenvolvidas</option>
-                <option>Arrumar a cama</option>
-                <option>Limpar a cozinha</option>
-                <option>Lavar roupas</option>
-                <option>Passar Roupas</option>
-                <option>Lavar cortinas</option>
-                <option>Limpar a varanda</option>
-                <option>Varrer chão</option>
-                <option>Recolher lixo</option>
-                <option>Trocar roupas de cama</option>
-                <option>Organizar armários</option>
-                <option>Limpar banheiro</option>
-                <option>Passar pano no chão</option>
-                <option>Limpar geladeira</option>
-                <option>Tirar o pó</option>
-                <option>Limpar janelas e vidros</option>
-            </select>
-        </div>
+
         <div class="col-md-12 text-center mt-3">
             <button class="btn btn-custom">Cadastrar</button>
         </div>
     </div>
-</div>
+</div> -->

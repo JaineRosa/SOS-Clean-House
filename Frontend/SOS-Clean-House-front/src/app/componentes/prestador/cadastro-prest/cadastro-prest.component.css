@@ -1,0 +1,54 @@
+.form-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  border-radius: 20px;
+}
+
+.btn-primary {
+  background-color: #0A1EA6;
+  border-color: #0A1EA6;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.btn-primary:hover {
+  background-color: #0000cc;
+  border-color: #0000cc;
+}
+
+.btn-outline-primary {
+  border-radius: 20px;
+}
+
+.success-message {
+  background-color: #0A1EA6;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.toast {
+  background-color: #0A1EA6;
+  color: white;
+  border-radius: 32px;
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.toast .toast-body {
+  text-align: center;
+  font-size: 24px;
+  color: white;
+}
+.toast .btn-close {
+  margin-left: 300px;
+  margin-top: 8px;
+}/*# sourceMappingURL=cadastro-prest.component.css.map */

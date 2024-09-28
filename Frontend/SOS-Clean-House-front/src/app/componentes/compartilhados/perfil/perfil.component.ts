@@ -10,10 +10,15 @@ export class PerfilComponent {
 
   constructor(private router: Router) { }
 
-  cadastrar(event: any) {
+  cadastrarUsuario(event: any) {
     event.preventDefault();
     event.stopPropagation();
     this.router.navigate(['/cadastrar']);
+  }
 
+  cadastrarPrestador(event: any) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.router.navigate(['/cadastro-prest']);
   }
 }

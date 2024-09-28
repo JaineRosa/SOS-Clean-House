@@ -1,0 +1,120 @@
+@charset "UTF-8";
+.container {
+  max-width: 850px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 32px;
+  background-color: #fff;
+}
+.container h4 {
+  margin-left: 70px;
+}
+
+.btn-edit {
+  background-color: #0A1EA6;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 32px;
+  cursor: pointer;
+}
+
+.btn-edit-claro {
+  width: 150px;
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 8px 0;
+  border-radius: 32px;
+  cursor: pointer;
+  border: #0A1EA6 solid 1px;
+  margin: 0 40px;
+}
+
+.btn-edit-claro:hover {
+  background-color: #0A1EA6;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #071675;
+}
+
+div {
+  margin: 20px 20px;
+}
+div .col-4 {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.calendario {
+  display: inline-flex;
+}
+
+.mes select {
+  margin: 0;
+  border-radius: 32px;
+  margin: 4px;
+}
+.mes .col-4 {
+  margin: 40px;
+  text-align: center;
+}
+.mes .col-4 h5 {
+  padding: 12px;
+}
+
+.ano {
+  /* Ajusta o espaçamento interno dos títulos */
+}
+.ano .dp-hidden {
+  width: 0;
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+.ano .custom-day {
+  text-align: center;
+  padding: 0.185rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+.ano .custom-day.focused {
+  background-color: #e6e6e6;
+}
+.ano .custom-day.range,
+.ano .custom-day:hover {
+  background-color: rgb(2, 117, 216);
+  color: white;
+}
+.ano .custom-day.faded {
+  background-color: rgba(2, 117, 216, 0.5);
+}
+.ano .col-md-12 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.ano .display {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.ano h5 {
+  padding: 12px;
+}
+.ano .col-md-4 {
+  margin-right: 100px;
+  margin-left: -20px;
+}
+.ano form {
+  margin-top: -12px;
+  width: 300px;
+}
+.ano form .input-group {
+  margin: 0;
+  width: 220px;
+}/*# sourceMappingURL=ganhos-prest.component.css.map */

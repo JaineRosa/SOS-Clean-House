@@ -51,12 +51,6 @@ export class GanhosPrestComponent {
     }
   }
  
-  
-
-
-
-
-
   calendar = inject(NgbCalendar);
 	formatter = inject(NgbDateParserFormatter);
 
@@ -98,5 +92,13 @@ export class GanhosPrestComponent {
 		const parsed = this.formatter.parse(input);
 		return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
 	}
+
+
+  secaoAtual: string = 'dia';
+  mostrarSecao(secao: string) {
+    this.secaoAtual = secao;
+  }
+ 
+
 }
 

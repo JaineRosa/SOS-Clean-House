@@ -9,6 +9,9 @@ import { Prestador } from '../interface/Prestador';
   providedIn: 'root'
 })
 export class DiaCalendarioService {
+  static getDiaCalendario(): DiaCalendario {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http: HttpClient) { }
 

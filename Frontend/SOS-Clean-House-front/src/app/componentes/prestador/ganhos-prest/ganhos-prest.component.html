@@ -1,12 +1,15 @@
+<app-filtro-prest></app-filtro-prest>
 <div class="container">
     <h4><strong>Pesquisar por:</strong></h4>
 
     <div>
-        <button type="button" class="btn-edit-claro">Dia</button>
-        <button type="button" class="btn-edit-claro">Mês</button>
-        <button type="button" class="btn-edit-claro">Periodo</button>
+        <button type="button" class="btn-edit-claro" (click)="mostrarSecao('dia')">Dia</button>
+        <button type="button" class="btn-edit-claro" (click)="mostrarSecao('mes')">Mês</button>
+        <button type="button" class="btn-edit-claro" (click)="mostrarSecao('periodo')">Período</button>
     </div>
-    <div class="row-12 calendario">
+
+    <!-- Seção de ganhos por dia -->
+    <div class="row-12 calendario" *ngIf="secaoAtual === 'dia'">
         <div class="col-7">
             <app-calendario></app-calendario>
         </div>
@@ -23,22 +26,13 @@
             <h5><strong>Valor total: R$ 300,00</strong></h5>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <h4><strong>Pesquisar por:</strong></h4>
-
-    <div>
-        <button type="button" class="btn-edit-claro">Dia</button>
-        <button type="button" class="btn-edit-claro">Mês</button>
-        <button type="button" class="btn-edit-claro">Periodo</button>
-    </div>
-    <div class="row-12 calendario mes">
-        <div class="col-7 ">
+    <!-- Seção de ganhos por mês -->
+    <div class="row-12 calendario mes" *ngIf="secaoAtual === 'mes'">
+        <div class="col-7">
             <div>
                 <label for="mesSelect">Pesquisar por mês:</label>
-                <select class="form-control" id="mesSelect" [(ngModel)]="mesSelecionado"
-                    (change)="pesquisarPorMesAno()">
+                <select class="form-control" id="mesSelect" [(ngModel)]="mesSelecionado" (change)="pesquisarPorMesAno()">
                     <option value="">Selecione o mês</option>
                     <option *ngFor="let mes of meses" [value]="mes.valor">{{ mes.nome }}</option>
                 </select>
@@ -46,54 +40,28 @@
 
             <div>
                 <label for="anoSelect">Pesquisar por ano:</label>
-                <select class="form-control" id="anoSelect" [(ngModel)]="anoSelecionado"
-                    (change)="pesquisarPorMesAno()">
+                <select class="form-control" id="anoSelect" [(ngModel)]="anoSelecionado" (change)="pesquisarPorMesAno()">
                     <option value="">Selecione o ano</option>
                     <option *ngFor="let ano of anos" [value]="ano">{{ ano }}</option>
                 </select>
             </div>
         </div>
         <div class="col-4">
-            <h5><strong *ngIf="mesSelecionado,anoSelecionado">{{mesSelecionado}}/{{anoSelecionado}}</strong></h5>
+            <h5><strong *ngIf="mesSelecionado && anoSelecionado">{{mesSelecionado}}/{{anoSelecionado}}</strong></h5>
             <h5><strong>Valor total: R$ 3000,00</strong></h5>
         </div>
     </div>
-</div>
 
-
-<div class="container">
-    <h4><strong>Pesquisar por:</strong></h4>
-
-    <div>
-        <button type="button" class="btn-edit-claro">Dia</button>
-        <button type="button" class="btn-edit-claro">Mês</button>
-        <button type="button" class="btn-edit-claro">Periodo</button>
-    </div>
-    <div class="row calendario ano">
+    <!-- Seção de ganhos por período -->
+    <div class="row calendario ano" *ngIf="secaoAtual === 'periodo'">
         <div class="col-md-12 display">
             <div class="col-md-6">
                 <form class="row">
                     <div class="col-md-6">
-                        <div class="dp-hidden position-absolute">
-                            <div class="input-group">
-                                <input name="datepicker" class="form-control" ngbDatepicker #datepicker="ngbDatepicker"
-                                    [autoClose]="'outside'" (dateSelect)="onDateSelection($event)" [displayMonths]="2"
-                                    [dayTemplate]="t" outsideDays="hidden" [startDate]="fromDate!" tabindex="-1" />
-                                <ng-template #t let-date let-focused="focused">
-                                    <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
-                                        [class.faded]="isHovered(date) || isInside(date)"
-                                        (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
-                                        {{ date.day }}
-                                    </span>
-                                </ng-template>
-                            </div>
-                        </div>
                         <div class="input-group">
                             <input #dpFromDate class="form-control" placeholder="yyyy-mm-dd" name="dpFromDate"
                                 [value]="formatter.format(fromDate)"
                                 (input)="fromDate = validateInput(fromDate, dpFromDate.value)" />
-                            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="datepicker.toggle()"
-                                type="button"></button>
                         </div>
                     </div>
 
@@ -102,8 +70,6 @@
                             <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate"
                                 [value]="formatter.format(toDate)"
                                 (input)="toDate = validateInput(toDate, dpToDate.value)" />
-                            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="datepicker.toggle()"
-                                type="button"></button>
                         </div>
                     </div>
                 </form>

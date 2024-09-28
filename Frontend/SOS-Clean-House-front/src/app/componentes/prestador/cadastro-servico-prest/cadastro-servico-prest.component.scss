@@ -1,14 +1,121 @@
-.custom-select, .custom-input {
-    border-radius: 30px;
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    width: 100%;
-    margin-bottom: 10px;
+// .container{
+//     width: 1400px;
+// }
+// .custom-select,
+// .custom-input {
+//     border-radius: 32px;
+//     border: 1px solid #ccc;
+//     padding: 10px 20px;
+//     width: 100%;
+//     margin-bottom: 10px;
+// }
+
+// .btn-custom {
+//     background-color: #0000FF;
+//     color: white;
+//     border-radius: 30px;
+//     padding: 10px 40px;
+//     border: none;
+// }
+
+// .ng-select.custom {
+//     border-radius: 32px;
+//     border: 1px solid #ccc;
+//     padding: 10px 20px;
+//     width: 100%;
+//     margin-bottom: 10px;
+
+//     .ng-option {
+//         background-color: pink;
+
+//     }
+
+// }
+
+// g-select input[type="checkbox"] {
+//     background-color: lightblue;
+//     /* Escolha a cor desejada */
+
+// }
+
+// ::ng-deep .ng-select.custom .ng-option {
+//     background-color: #f0f0f0;
+//     /* Cor de fundo para as opções */
+//     font-size: 18px;
+//     padding: 2px 4px;
+// }
+
+// ::ng-deep .ng-select.custom .ng-option:hover {
+//     background-color: #e0e0e0;
+//     /* Cor de fundo ao passar o mouse */
+// }
+
+// ::ng-deep .ng-select.custom .ng-option input[type="checkbox"] {
+//     background-color: #d0d0d0;
+//     margin: 2px 4px;
+//     /* Cor de fundo para o input */
+// }
+// ::ng-deep .ng-value{
+
+//     background-color: #cdcdcd;
+//     border-left: solid 2px #0000FF;
+//     margin-left: 4px;
+//     margin-top: 4px;
+//     border-radius: 4px;
+
+// }
+
+.form-check-label {
+    display: inline-block;
+    opacity: 1;
 }
+
+
+
+h2 {
+    margin-top: 60px;
+}
+
+h4 {
+    margin: 16px;
+}
+
+.wizard {
+
+    width: 900px;
+    margin: 60px auto;
+    padding: 32px 60px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    border: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.wizard-step {
+    margin-bottom: 20px;
+}
+
+.display {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .btn-custom {
-    background-color: #0000FF;
+    background-color: #0A1EA6;
+    margin: 20px;
     color: white;
-    border-radius: 30px;
-    padding: 10px 40px;
-    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    display: inline-f;
+    justify-content: center;
+}
+
+.btn-custom:hover {
+    background-color: #0000cc;
+    border-color: #0000cc;
+}
+.custom-input{
+    border: #0A1EA6 solid 1px;
+    border-radius: 8px;
 }

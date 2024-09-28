@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Data @Builder
@@ -22,6 +23,7 @@ public class DiaCalendario {
     private Boolean isMeioManha;
     private Boolean isMeioTarde;
     private Integer taxaExtraMeia;
+    private List<String> diasDaSemana;
 
     @ManyToOne
     @JoinColumn(name = "prestador_id")

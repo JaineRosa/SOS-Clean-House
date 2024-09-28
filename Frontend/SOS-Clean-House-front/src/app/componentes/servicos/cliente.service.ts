@@ -35,4 +35,8 @@ export class ClienteService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+  
+  validarLogin(credenciais: any): Observable<Cliente> {
+    return this.http.post<Cliente>(`${this.apiUrl}/login`, credenciais);
+  }
 }

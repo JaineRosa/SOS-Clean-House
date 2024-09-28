@@ -1,7 +1,6 @@
 <body>
-  <app-tela-inicial-prest></app-tela-inicial-prest>
   <app-header></app-header>
-  <app-filtro></app-filtro>
+  <app-filtro *ngIf="isVisivel"></app-filtro>
   <app-line></app-line>
   
   <main>

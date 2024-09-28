@@ -28,5 +28,10 @@ public class ClienteService {
     public void delete(Cliente cliente){
         clienteRepository.delete(cliente);
     }
-    
+
+    public Cliente validarLogin(String email, String senha){
+        return clienteRepository.validarLogin(email, senha);
+    }
+
+
 }

@@ -1,5 +1,8 @@
 package com.SOS_Clean_House_back.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,9 +27,10 @@ public class Agendamento {
     private DiaCalendario dataservico;
 
     @OneToOne
-    @JoinColumn(name = "endereco_servico_id")
+    @JoinColumn(name = "endereco_servico_id_agendamento")
     private EnderecoServico enderecoServico;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "servico_id")
     private Servico servico;
@@ -38,6 +42,7 @@ public class Agendamento {
     @ManyToOne
     @JoinColumn(name = "prestador_id")
     private Prestador prestador;
+
 
     @ManyToMany
     @JoinTable(

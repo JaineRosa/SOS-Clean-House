@@ -1,0 +1,137 @@
+@charset "UTF-8";
+.display {
+  width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.menor {
+  width: 300px;
+  margin: 20px auto; /* center the container */
+  padding: 8px;
+  border-radius: 32px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.borda {
+  border: #cdcdcd solid 1px;
+  border-radius: 32px;
+  padding: 0 16px;
+  margin: 4px;
+}
+
+.card {
+  width: 100%;
+  border: white;
+}
+
+h6 {
+  width: 140px;
+  margin: 16px 0;
+}
+
+h5 {
+  text-align: center;
+  padding: 4px;
+  margin: 8px 0;
+}
+
+button {
+  background-color: white;
+  color: black;
+  height: 24px;
+  margin-top: 16px;
+  padding: 0;
+  border-radius: 32px;
+}
+
+.container {
+  width: 400px; /* adjust the width to your liking */
+  margin: 20px auto; /* center the container */
+  padding: 20px;
+  border-radius: 32px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ngb-datepicker {
+  width: 100%; /* make the date picker full width */
+  padding: 10px;
+  border: solid 1px white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 32px;
+}
+
+ngb-datepicker::ng-deep .ngb-dp-header {
+  background-color: white; /* style the date picker header */
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+ngb-datepicker::ng-deep .ngb-dp-weekday {
+  color: #0A1EA6;
+  width: 50px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+ngb-datepicker::ng-deep .ngb-dp-weekdays {
+  width: 338px;
+  padding: 0;
+  margin: 0;
+}
+
+ngb-datepicker::ng-deep .form-select {
+  margin: 8px;
+}
+
+ngb-datepicker::ng-deep .ngb-dp-day {
+  width: 50px; /* adjust the day cell width */
+  height: 35px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+ngb-datepicker::ng-deep .ngb-dp-day:hover {
+  background-color: #f0f0f0; /* hover effect for day cells */
+}
+
+p {
+  font-size: 18px; /* adjust the font size */
+  font-weight: bold;
+  color: #666;
+}
+
+.input-container {
+  position: relative;
+  display: inline-block;
+  padding: 8px;
+  border: #ccc solid 1px;
+  border-radius: 32px;
+  margin: 4px 4px;
+}
+
+.input-container input {
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 32px;
+  border: white;
+  font-size: 18px;
+  color: black;
+  margin: 4px;
+}
+
+.input-container i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Para não interferir na interação com o input */
+}
+
+input:focus {
+  outline: none;
+}/*# sourceMappingURL=calendario-prest.component.css.map */

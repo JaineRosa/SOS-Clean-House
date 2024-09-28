@@ -1,0 +1,38 @@
+.select-items {
+  background-color: #cdcdcd;
+  border-radius: 32px;
+  padding: 8px 12px;
+  width: 200px;
+  display: block; /* add this to layout the child elements */
+  flex-wrap: wrap; /* add this to wrap the child elements to the next line */
+}
+
+.select-items div {
+  padding-left: 8px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.select-items div:hover {
+  background-color: #f1f1f1;
+}
+
+button {
+  width: 100px;
+  padding: 8px;
+  margin: 8px;
+  border-radius: 32px;
+  border: 2px solid #E0E0E0;
+  background-color: #E0E0E0;
+  color: #0A1EA6;
+  text-align: center;
+  display: inline-block;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0A1EA6;
+  color: white;
+}/*# sourceMappingURL=bairro.component.css.map */

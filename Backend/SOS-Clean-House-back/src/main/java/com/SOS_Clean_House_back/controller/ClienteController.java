@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/cliente")
@@ -40,5 +41,12 @@ public class ClienteController {
         Cliente cliente = clienteService.findById(id);
         clienteService.delete(cliente);
         return ResponseEntity.ok(cliente);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Cliente> validarLogin(@RequestBody Map<String, Object> credenciais) {
+        String email = credenciais.get("EMAIL").toString();
+        String senha = credenciais.get("SENHA").toString();
+        return ResponseEntity.ok(clienteService.validarLogin(email, senha));
     }
 }

@@ -3,8 +3,8 @@ import { Servico } from "./Servico";
 
 export interface Horario {
     id: number;
-    horarioInicio: number;
-    horarioFim: number;
+    horarioInicio: String;
+    horarioFim: String;
     meioPeriodo: boolean;
     servico: Servico;
     prestador: Prestador;

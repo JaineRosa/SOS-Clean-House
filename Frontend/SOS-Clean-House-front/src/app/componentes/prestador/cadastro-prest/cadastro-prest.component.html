@@ -1,42 +1,42 @@
 
     <h4>Cadastro Prestador:</h4>
-    <form>
+    <form >
         <div class="mb-3">
-            <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" placeholder="Nome Completo:" [ngModel]="prestador.nomeCompleto">
-        </div>
-        <div class="mb-3">
-            <input type="email" class="form-control" id="email" name="email" placeholder="Email:" [ngModel]="prestador.email">
+            <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" placeholder="Nome Completo:" [(ngModel)]="prestador.nomeCompleto">
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço:" [ngModel]="prestador.endereco">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email:" [(ngModel)]="prestador.email">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço:" [(ngModel)]="prestador.endereco">
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone:" [ngModel]="prestador.telefone">
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone:" [(ngModel)]="prestador.telefone">
             </div>
             <div class="col">
-                <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" placeholder="Data de Nascimento:" [ngModel]="prestador.dataNascimento">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF:" [ngModel]="prestador.cpf">
-            </div>
-            <div class="col">
-                <input type="text" class="form-control" id="tempoExperiencia" name="tempoExperiencia" placeholder="Tempo de Experiencia:" [ngModel]="prestador.tempoExperiencia">
+                <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" placeholder="Data de Nascimento:" [(ngModel)]="prestador.dataNascimento">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input type="password" class="form-control" id="senha" name="senha"  placeholder="Senha:"[ngModel]="prestador.senha">
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF:" [(ngModel)]="prestador.cpf">
             </div>
             <div class="col">
-                <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar Senha:" [ngModel]="prestador.confirmarSenha">
+                <input type="text" class="form-control" id="tempoExperiencia" name="tempoExperiencia" placeholder="Tempo de Experiencia:" [(ngModel)]="prestador.tempoExperiencia">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input type="text" class="form-control" id="foto" name="foto" placeholder="Foto de perfil:" [ngModel]="prestador.foto">
+                <input type="password" class="form-control" id="senha" name="senha"  placeholder="Senha:"[(ngModel)]="prestador.senha">
+            </div>
+            <div class="col">
+                <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar Senha:" [(ngModel)]="prestador.confirmarSenha">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <input type="text" class="form-control" id="foto" name="foto" placeholder="Foto de perfil:" [(ngModel)]="prestador.foto">
             </div>
             <div class="col-auto">
                 <button type="button" class="btn btn-outline-primary">Procurar</button>
@@ -44,7 +44,7 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input type="text" class="form-control" id="antecedentesCriminais" name="antecedentesCriminais" placeholder="Antecedentes Criminais:" [ngModel]="prestador.antecedentesCriminais">
+                <input type="text" class="form-control" id="antecedentesCriminais" name="antecedentesCriminais" placeholder="Antecedentes Criminais:" [(ngModel)]="prestador.antecedentesCriminais">
             </div>
             <div class="col-auto">
                 <button type="button" class="btn btn-outline-primary">Procurar</button>
@@ -52,34 +52,34 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input type="text" class="form-control" id="documentos" name="documentos" placeholder="Envio de Documentos:" [ngModel]="prestador.documentos">
+                <input type="text" class="form-control" id="documentos" name="documentos" placeholder="Envio de Documentos:" [(ngModel)]="prestador.documentos">
             </div>
             <div class="col-auto">
                 <button type="button" class="btn btn-outline-primary">Procurar</button>
             </div>
         </div>
         <div class="mb-3">
-            <textarea class="form-control" rows="3" id="sobreMim" name="sobreMim" placeholder="Sobre mim:" [ngModel]="prestador.sobreMim"></textarea>
+            <textarea class="form-control" rows="3" id="sobreMim" name="sobreMim" placeholder="Sobre mim:" [(ngModel)]="prestador.sobreMim"></textarea>
         </div>
         <h5>Informações Bancarias</h5>
         <div class="row mb-3">
             <div class="col">
-                <input type="text" class="form-control" id="agencia" name="agencia" placeholder="Agencia:" [ngModel]="contaBancaria.agencia">
+                <input type="text" class="form-control" id="agencia" name="agencia" placeholder="Agencia:" [(ngModel)]="contaBancaria.agencia">
             </div>
             <div class="col">
-                <input type="text" class="form-control"  id="conta" name="conta" placeholder="Conta:" [ngModel]="contaBancaria.conta">
+                <input type="text" class="form-control"  id="conta" name="conta" placeholder="Conta:" [(ngModel)]="contaBancaria.conta">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input type="text" class="form-control" id="nomeTitular" name="nomeTitular" placeholder="Nome do titular:" [ngModel]="contaBancaria.nomeTitular">
+                <input type="text" class="form-control" id="nomeTitular" name="nomeTitular" placeholder="Nome do titular:" [(ngModel)]="contaBancaria.nomeTitular">
             </div>
             <div class="col">
-                <input type="text" class="form-control" id="cpfTitular" name="cpfTitular" placeholder="CPF do titular:" [ngModel]="contaBancaria.cpf">
+                <input type="text" class="form-control" id="cpfTitular" name="cpfTitular" placeholder="CPF do titular:" [(ngModel)]="contaBancaria.cpf">
             </div>
         </div>
         <div class="d-grid col-6">
-            <button type="submit" class="btn btn-primary" id="liveToastBtn" (click)="telaInicial($event)">Cadastrar</button>
+            <button  class="btn btn-primary" id="liveToastBtn"  (click)="savePrest()">Cadastrar</button>
             
         </div>
     </form>

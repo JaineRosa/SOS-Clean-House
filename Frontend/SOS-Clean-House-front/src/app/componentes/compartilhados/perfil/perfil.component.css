@@ -1,0 +1,43 @@
+button {
+  width: 260px;
+  padding: 10px;
+  margin: 15px;
+  border-radius: 32px;
+  border: 2px solid #0A1EA6;
+  background-color: #E0E0E0;
+  color: #0A1EA6;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.line-azul {
+  margin: 5px;
+  margin-top: 20px;
+  height: 2px;
+  background-color: #0A1EA6;
+}
+
+button:hover {
+  background-color: #0A1EA6;
+  color: white;
+}
+
+.modal-content {
+  margin-left: 150px;
+  width: 280px;
+  background-color: #cdcdcd;
+  border-radius: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+}
+
+#exampleModal {
+  position: fixed;
+  margin-left: 490px;
+  margin-top: 110px;
+}/*# sourceMappingURL=perfil.component.css.map */

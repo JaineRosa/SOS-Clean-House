@@ -47,26 +47,18 @@
             </div>
             <div class="form-group">
                 <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Foto de perfil:" [ngModel]="cliente.fotoPerfil">
+                    <div class="col mt-3">
+                        <input type="text" class="form-control rounded-input" placeholder="Foto de perfil:" [(ngModel)]="cliente.fotoPerfil">
                     </div>
-                    <div class="col-auto">
-                        <button type="button" class="btn btn-outline-primary">Procurar</button>
+                    <div class="col-auto mt-3">
+                        <button type="button" class="btn btn-outline-primary add-card-button">Procurar</button>
                     </div>
                 </div>
 
             </div>
-            <div class="form-row">
-                <div class="form-group col-6">
-                    <button class="add-card-button" type="button" class="submit-button" data-bs-toggle="modal"
-                        data-bs-target="#creditCardModal">+ Cadastrar Cartão de Crédito</button>
-                </div>
-                <div class="form-group col-6">
-                    <button class="add-card-button" type="button" class="submit-button" data-bs-toggle="modal"
-                        data-bs-target="#creditCardModal">Cartão Final 0000</button>
-                </div>
-                <div class="form-group col-6 ">
-                    <button type="button" class="submit-button" id="liveToastBtn">Cadastrar</button>
+            <div class="row-12 ">
+                <div class="form-group mt-0 col-6 ">
+                    <button type="button" class="submit-button" id="liveToastBtn" (click)="saveCliente()">Cadastrar</button>
                 </div>
             </div>
         </form>
@@ -88,7 +80,6 @@
         <button type="button" class="btn-close btn-close-white a " data-bs-dismiss="toast" aria-label="Close"></button>
         <div class="toast-body">
             Cadastro concluído com sucesso!
-
         </div>
     </div>
 </div>

@@ -8,15 +8,16 @@ import * as bootstrap from 'bootstrap';
   templateUrl: './filtro.component.html',
   styleUrl: './filtro.component.scss'
 })
-export class FiltroComponent implements OnInit {
+export class FiltroComponent  {
 
   cleaningType: string = '';
   horarioType: string = '';
   bairroType: string = ''; // Propriedade para armazenar os bairros selecionados
-  
+  isVisivel:  boolean = true; // Propriedade para controlar a visibilidade do filtro
+
   constructor() { }
 
-  ngOnInit(): void { }
+
 
   onFocus(event: FocusEvent) {
     const input = event.target as HTMLInputElement;

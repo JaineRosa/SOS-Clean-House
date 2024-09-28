@@ -7,6 +7,15 @@ import { AtividadesDesenvolvidas } from '../../interface/AtividadesDesenvolvidas
 import { Prestador } from '../../interface/Prestador';
 import { ContaPrestador } from '../../interface/ContaPrestador';
 import { Router } from '@angular/router';
+import { Horario } from '../../interface/Horario';
+import { Agendamento } from '../../interface/Agendamento';
+import { TipoServico } from '../../interface/TipoServico';
+import { ServicoService } from '../../servicos/servico.service';
+import { DiaCalendario } from '../../interface/DiaCalendario';
+import { DiaCalendarioService } from '../../servicos/dia-calendario.service';
+import { EnderecoServicoService } from '../../servicos/endereco-servico.service';
+import { response } from 'express';
+import { AgendamentoService } from '../../servicos/agendamento.service';
 
 @Component({
   selector: 'app-reserva',
@@ -14,9 +23,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./reserva.component.scss']
 })
 export class ReservaComponent implements OnInit {
-  
+
+  atividades: string[] = [];
 
   ngOnInit(): void {
+    this.atividades = [
+			'Arrumar a cama',
+			'Limpar a cozinha',
+			'Lavar roupas',
+			'Passar Roupas',
+			'Lavar cortinas',
+			'Limpar a varanda',
+			'Varrer chão',
+			'Recolher lixo',
+			'Trocar roupas de cama',
+			'Organizar armários',
+			'Limpar banheiro',
+			'Passar pano no chão',
+			'Limpar geladeira',
+			'Tirar o pó',
+			'Limpar janelas e vidros'
+		];
     this.atualizarCheckboxes();
   }
 
@@ -30,11 +57,9 @@ export class ReservaComponent implements OnInit {
     control.at(index).setValue(event.target.checked);
   }
 
-
-
   selectedPeriod: string | null = null;
 
-   constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private servicoService: ServicoService, private enderecoServicoService: EnderecoServicoService, private agendamentoService: AgendamentoService) {
     this.form = this.fb.group({
       enderecoServico: this.fb.group({
         cep: [''],
@@ -51,12 +76,38 @@ export class ReservaComponent implements OnInit {
     this.selectedPeriod = period;
   }
 
-  prestador: Prestador = {
+  agendamento: Agendamento = {
     id: 0,
+    status: false,
+    dataAgendamento: new Date,
+    dataservico: {} as DiaCalendario,
+    enderecoServico: {} as EnderecoServico,
+    servico: {} as Servico,
+    cliente: {} as Cliente,
+    prestador: {} as Prestador,
+    servicosRelacionados: []
+  }
+  cliente: Cliente = {
+    id: 202,
+    sexo: '',
+    clienteCartoes: [],
+    nomeCompleto: '',
+    endereco: '',
+    telefone: '',
+    dataNascimento: new Date,
+    cpf: '',
+    email: '',
+    senha: '',
+    confirmarSenha: '',
+    fotoPerfil: null,
+    chats: []
+  }
+  prestador: Prestador = {
+    id: 53,
     tempoExperiencia: 0,
-    antecedentesCriminais: new Uint8Array(),
-    foto: new Uint8Array(),
-    documentos: new Uint8Array(),
+    antecedentesCriminais: null,
+    foto: null,
+    documentos: null,
     agendamentos: [],
     atividadesDesenvolvidas: [],
     diaCalendarios: [],
@@ -71,10 +122,32 @@ export class ReservaComponent implements OnInit {
     chats: [],
     contaPrestador: {} as ContaPrestador,
     dataNascimento: new Date(),
-    fotoPerfil: new Blob(),
+    fotoPerfil: null,
     sobreMim: ''
   };
-
+  horario: Horario = {
+    id: 0,
+    horarioInicio: "",
+    horarioFim: '',
+    meioPeriodo: false,
+    servico: {} as Servico,
+    prestador: {} as Prestador
+  }
+  servico: Servico = {
+    id: 0,
+    valorDiario4H: '',
+    valorDiario8H: '0',
+    tempoReserva: '',
+    observacoes: '',
+    horarios: [],
+    agendamento: {} as Agendamento,
+    enderecoServico: {} as EnderecoServico,
+    agendamentosRelacionados: [],
+    servico: '',
+    diasDaSemana: [],
+    atividades: [],
+    prestador: {} as Prestador
+  }
   enderecoServico: EnderecoServico = {
     id: 0,
     rua: '',
@@ -89,27 +162,68 @@ export class ReservaComponent implements OnInit {
   };
 
   form: FormGroup;
-  atividades: string[] = [
-    'Arrumar a cama',
-    'Limpar a cozinha',
-    'Lavar roupas',
-    'Passar Roupas',
-    'Lavar cortinas',
-    'Limpar a varanda',
-    'Varrer chão',
-    'Recolher lixo',
-    'Trocar roupas de cama',
-    'Organizar armários',
-    'Limpar banheiro',
-    'Passar pano no chão',
-    'Limpar geladeira',
-    'Tirar o pó',
-    'Limpar janelas e vidros'
-  ];
+ 
 
   pagar(event: any) {
     event.preventDefault();
     event.stopPropagation();
-    this.router.navigate(['/pagar']); // Remove the array wrapper
+    this.router.navigate(['/pagar']);
+  }
+
+  saveReserva(): void {
+
+    const valoresAtividades = this.form.get('atividades')?.value;
+		this.servico.atividades = this.atividades.filter((atividade, index) => valoresAtividades[index]);
+
+    const enderecoForm = this.form.get('enderecoServico')?.value;
+    this.enderecoServico = {
+      id: 0,
+      cep: enderecoForm.cep,
+      bairro: enderecoForm.bairro,
+      rua: enderecoForm.rua,
+      cidade: enderecoForm.cidade,
+      observacao: enderecoForm.observacao,
+      numero: enderecoForm.numero || '',
+      cliente: this.cliente,
+      servico: this.servico,
+      servicoReference: {} as Servico
+    };
+
+    const servico: Servico = {
+      id: 0,
+      valorDiario4H: this.form.get('valorDiario4H')?.value,
+      valorDiario8H: this.form.get('valorDiario8H')?.value,
+      tempoReserva: this.form.get('tempoReserva')?.value,
+      observacoes: this.form.get('enderecoServico.observacao')?.value,
+      horarios: [this.horario],
+      enderecoServico: this.enderecoServico,
+      atividades: this.form.get('atividades')?.value,
+      agendamentosRelacionados: [],
+      agendamento: {} as Agendamento,
+      servico: '',
+      diasDaSemana: [],
+      prestador: this.prestador
+    };
+
+       
+    this.servicoService.create(servico).subscribe(
+      response => {
+        console.log('Serviço salvo com sucesso:', response);
+
+        this.enderecoServicoService.create(this.enderecoServico).subscribe(
+          enderecoResponse => {
+            console.log('Endereço salvo com sucesso:', enderecoResponse);
+          },
+          error => {
+            console.error('Erro ao salvar endereço:', error);
+          }
+        );
+      },
+      error => {
+        console.error('Erro ao salvar serviço:', error);
+      }
+    );
+
+    this.router.navigate(['/pagar']);  // Redirecionar após salvar
   }
 }

@@ -21,18 +21,18 @@ public class Prestador extends Usuario {
     private byte[] documentos;
     private String sobreMim;
 
-    @OneToMany(mappedBy = "prestador", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "prestador")
     private List<Agendamento> agendamentos;
 
-    @OneToMany(mappedBy = "prestador", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "prestador")
     private List<AtividadesDesenvolvidas> atividadesDesenvolvidas;
 
-    @OneToMany(mappedBy = "prestador", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "prestador")
     private List<DiaCalendario> diaCalendarios;
 
-    @OneToOne(mappedBy = "prestador", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "prestador")
     private ContaPrestador contaPrestador;
 
-    @OneToMany(mappedBy = "prestador", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "prestador")
     private List<Horario> horarios;
 }

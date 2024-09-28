@@ -1,0 +1,35 @@
+nav {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin: 0;
+  margin-top: 40px;
+}
+nav button {
+  background-color: white;
+  border: white;
+  width: 150px;
+  font-size: 18px;
+  text-align: center;
+}
+nav .search-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  width: 850px;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 8px 8px;
+}
+nav .search-item {
+  padding: 0 4px;
+  margin-right: 8px;
+  border-right: 1px solid #e0e0e0;
+  font-size: 20px;
+  color: #333;
+}
+nav .search-item:last-child {
+  border-right: none;
+}/*# sourceMappingURL=filtro-prest.component.css.map */

@@ -1,5 +1,7 @@
 package com.SOS_Clean_House_back.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +10,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Data @Builder
+
+
 public class EnderecoServico {
 
     @Id
@@ -19,13 +23,14 @@ public class EnderecoServico {
     private String bairro;
     private String cidade;
     private Integer cep;
+    private String observacao;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    @OneToOne(mappedBy = "enderecoServico")
-    private Servico servico;
+
+
 
     @OneToOne
     @JoinColumn(name = "servico_id")

@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-import { HttpClientModule } from '@angular/common/http';
+
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './componentes/compartilhados/header/header.component';
@@ -44,60 +45,66 @@ import { AnuncioComponent } from './componentes/prestador/anuncio/anuncio.compon
 import { GanhosPrestComponent } from './componentes/prestador/ganhos-prest/ganhos-prest.component';
 import { PerfilPrestComponent } from './componentes/prestador/perfil-prest/perfil-prest.component';
 import { CadastroServicoPrestComponent } from './componentes/prestador/cadastro-servico-prest/cadastro-servico-prest.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { LoginPrestComponent } from './componentes/prestador/login-prest/login-prest.component';
+
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    LineComponent,
-    FiltroComponent,
-    CardsComponent,
-    NovidadesComponent,
-    PerfilComponent,
-    LoginComponent,
-    TipoLimpezaComponent,
-    HorarioComponent,
-    BairroComponent,
-    CadastroClienteComponent,
-    CartaoCreditoComponent,
-    CardsPrestadorJaContratadosComponent,
-     ReservaComponent,
-    CardPrestContratarComponent,
-    CalendarioComponent,
-    ResumoComponent,
-    PagamentoComponent,
-    PerfilClienteComponent,
-    TelaInicialComponent,
-    PesquisarComponent,
-    CardPesquisarComponent,
-    ReservandoComponent,
-    PagarComponent,
-    ResumoReservaComponent,
-    TelaInicialLogadoComponent,
-    CadastrarComponent,
-    CadastroPrestComponent,
-    TelaInicialPrestComponent,
-    FiltroPrestComponent,
-    HojePrestComponent,
-    CalendarioPrestComponent,
-    AnuncioComponent,
-    GanhosPrestComponent,
-    PerfilPrestComponent,
-    CadastroServicoPrestComponent,
-    
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgbModule,
-    HttpClientModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-  
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        LineComponent,
+        FiltroComponent,
+        CardsComponent,
+        NovidadesComponent,
+        PerfilComponent,
+        LoginComponent,
+        TipoLimpezaComponent,
+        HorarioComponent,
+        BairroComponent,
+        CadastroClienteComponent,
+        CartaoCreditoComponent,
+        CardsPrestadorJaContratadosComponent,
+        ReservaComponent,
+        CardPrestContratarComponent,
+        CalendarioComponent,
+        ResumoComponent,
+        PagamentoComponent,
+        PerfilClienteComponent,
+        TelaInicialComponent,
+        PesquisarComponent,
+        CardPesquisarComponent,
+        ReservandoComponent,
+        PagarComponent,
+        ResumoReservaComponent,
+        TelaInicialLogadoComponent,
+        CadastrarComponent,
+        CadastroPrestComponent,
+        TelaInicialPrestComponent,
+        FiltroPrestComponent,
+        HojePrestComponent,
+        CalendarioPrestComponent,
+        AnuncioComponent,
+        GanhosPrestComponent,
+        PerfilPrestComponent,
+        CadastroServicoPrestComponent,
+        LoginPrestComponent,
+    ],
+    bootstrap: [AppComponent],
+
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgbModule,
+        NgSelectModule,
+        
+    ],
+
+    providers: [provideHttpClient(withInterceptorsFromDi())]
 })
+
 export class AppModule { }

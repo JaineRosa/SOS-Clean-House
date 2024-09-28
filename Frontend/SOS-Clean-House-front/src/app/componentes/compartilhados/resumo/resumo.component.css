@@ -1,0 +1,113 @@
+@charset "UTF-8";
+.container {
+  max-width: 900px;
+  margin: 30px auto 0 auto;
+  padding: 20px;
+  border-radius: 32px;
+  background-color: #fff;
+}
+
+.card {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: white;
+  border-radius: 32px;
+  padding: 20px;
+  margin: 10px;
+  min-height: 300px;
+  /* Altura mínima dos cards */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-subtitle {
+  font-size: 0.875rem;
+  color: #6c757d;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.btn {
+  border: 1px solid #007bff;
+  color: #007bff;
+  background-color: #fff;
+  border-radius: 32px;
+  padding: 4px 8px;
+  margin: 10px;
+}
+
+.btn:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.task {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.task-blue {
+  background-color: #007bff;
+}
+
+.task-darkblue {
+  background-color: #00008b;
+}
+
+.card p {
+  margin-bottom: 0;
+  padding: 2px;
+}
+
+.modal-content {
+  margin-left: 100px;
+  margin-top: 230px;
+  width: 350px;
+  background-color: #cdcdcd;
+  border-radius: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 0;
+}
+.modal-content p {
+  font-size: 20px;
+}
+.modal-content .btn {
+  padding: 4px 20px;
+}
+
+.toast {
+  background-color: #0A1EA6;
+  color: white;
+  border-radius: 32px;
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.toast .toast-body {
+  text-align: center;
+  font-size: 24px;
+  color: white;
+}
+.toast .btn-close {
+  margin-left: 300px;
+  margin-top: 8px;
+}/*# sourceMappingURL=resumo.component.css.map */
