@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Servico } from '../../interface/Servico';
+import { ServicoService } from '../../servicos/servico.service';
+import { Prestador } from '../../interface/Prestador';
+import { Horario } from '../../interface/Horario';
+import { ContaPrestador } from '../../interface/ContaPrestador';
 
 @Component({
   selector: 'app-card-prest-contratar',
@@ -6,5 +11,8 @@ import { Component } from '@angular/core';
   styleUrl: './card-prest-contratar.component.scss'
 })
 export class CardPrestContratarComponent {
+
+  @Input()
+  servico!: Servico;
 
 }

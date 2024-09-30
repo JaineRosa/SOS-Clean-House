@@ -1,5 +1,7 @@
 package com.SOS_Clean_House_back.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,18 +23,20 @@ public class Prestador extends Usuario {
     private byte[] documentos;
     private String sobreMim;
 
-    @OneToMany(mappedBy = "prestador")
-    private List<Agendamento> agendamentos;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "prestador")
     private List<AtividadesDesenvolvidas> atividadesDesenvolvidas;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "prestador")
     private List<DiaCalendario> diaCalendarios;
 
-    @OneToOne(mappedBy = "prestador")
+    @OneToOne(mappedBy = "prestador", cascade = CascadeType.ALL)
     private ContaPrestador contaPrestador;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "prestador")
     private List<Horario> horarios;
+
+
 }

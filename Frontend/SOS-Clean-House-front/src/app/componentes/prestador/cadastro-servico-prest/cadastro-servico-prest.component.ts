@@ -43,7 +43,7 @@ export class CadastroServicoPrestComponent implements OnInit {
 	selectDia = [];
 
 	prestador: Prestador = {
-		id: 53,
+		id: 0,
 		tempoExperiencia: 0,
 		antecedentesCriminais: null,
 		foto: null,
@@ -63,7 +63,8 @@ export class CadastroServicoPrestComponent implements OnInit {
 		senha: '',
 		confirmarSenha: '',
 		fotoPerfil: null,
-		chats: []
+		chats: [],
+		id_usuario: 0
 	}
 
 	servico: Servico = {
@@ -72,7 +73,7 @@ export class CadastroServicoPrestComponent implements OnInit {
 		valorDiario8H: '',
 		tempoReserva: '',
 		observacoes: '',
-		horarios: [],
+		horario: {} as Horario,
 		agendamento: {} as Agendamento,
 		enderecoServico: {} as EnderecoServico,
 		agendamentosRelacionados: [],
@@ -176,11 +177,19 @@ export class CadastroServicoPrestComponent implements OnInit {
 	}
 
 	finishWizard(): void {
-
+		const prestadorId = sessionStorage.getItem('prestador-id');
+    
+		if (prestadorId) {
+			this.servico.prestador.id = +prestadorId;
+			this.horario.prestador.id = +prestadorId;
+		} else {
+			console.error("Prestador ID não encontrado no sessionStorage");
+			return; 
+		}
 
 		const valoresAtividades = this.form.get('atividades')?.value;
 		this.servico.atividades = this.atividades.filter((atividade, index) => valoresAtividades[index]);
-		
+
 
 		const valoresTiposServicos = this.form.get('tiposServico')?.value;
 		const tiposServicoSelecionados: string[] = this.tiposServico.filter((tipo, index) => valoresTiposServicos[index]);
@@ -204,14 +213,11 @@ export class CadastroServicoPrestComponent implements OnInit {
 		this.horario.horarioFim = horariosFimSelecionados.join('');
 		console.log(this.horario);
 
-		this.horario.prestador = this.prestador;
-		this.servico.prestador = this.prestador;
-		
 		this.servicoService.create(this.servico).subscribe((response) => {
 			console.log("deu    certou ");
 			this.horario.servico = response;
 			this.horarioService.create(this.horario).subscribe((response) => {
-		
+
 				console.log("deu    certou  11111111");
 			}, (error) => {
 				console.error("NAOOO11111");
@@ -221,8 +227,8 @@ export class CadastroServicoPrestComponent implements OnInit {
 			console.error("NAOOOO");
 			// show error message
 		});
-		
-		
+
+
 	}
 
 	private atualizarCheckboxes(): void {

@@ -27,27 +27,11 @@ public class Servico {
     private List<String> diasDaSemana;
     private List<String> atividades;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "prestador_id")
     private Prestador prestador;
 
-
-
-    @JsonIgnore
     @OneToMany(mappedBy = "servico")
     private List<Horario> horarios;
-
-
-    @ManyToOne()
-    @JoinColumn(name = "agendamento_id")
-    private Agendamento agendamento;
-
-    @ManyToMany
-    @JoinTable(
-            name = "servico_agendamento",
-            joinColumns = @JoinColumn(name = "servico_id"),
-            inverseJoinColumns = @JoinColumn(name = "agendamento_id")
-    )
-    private List<Agendamento> agendamentosRelacionados;
 
 }

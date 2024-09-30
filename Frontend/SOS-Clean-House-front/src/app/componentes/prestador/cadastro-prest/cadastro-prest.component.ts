@@ -12,12 +12,35 @@ import { response } from 'express';
   styleUrl: './cadastro-prest.component.scss'
 })
 export class CadastroPrestComponent {
-  prestador!: Prestador;
+  prestador: Prestador ={
+    id: 0,
+    tempoExperiencia: 0,
+    antecedentesCriminais: null,
+    foto: null,
+    documentos: null,
+    sobreMim: '',
+    agendamentos: [],
+    atividadesDesenvolvidas: [],
+    diaCalendarios: [],
+    contaPrestador: {} as ContaPrestador,
+    horarios: [],
+    id_usuario: 0,
+    nomeCompleto: '',
+    endereco: '',
+    telefone: '',
+    dataNascimento: new Date,
+    cpf: '',
+    email: '',
+    senha: '',
+    confirmarSenha: '',
+    fotoPerfil: null,
+    chats: []
+  };
   contaBancaria: ContaPrestador = {
     id: 0,
     nomeTitular: '',
-    agencia: 0,
-    conta: 0,
+    agencia: '',
+    conta: '',
     cnpj: '',
     cpf: '',
     prestador: {} as Prestador
@@ -31,25 +54,30 @@ export class CadastroPrestComponent {
   //   this.router.navigate(['/tela-inicial-prest']);
   // }
 
-  
+ 
 
   
-    savePrest() {
-      this.prestadorService.create(this.prestador).subscribe((response) => {
-        console.log(response);
+  savePrest() {
+    console.log('Dados sendo enviados para o servidor:', this.prestador);
+    this.prestadorService.create(this.prestador).subscribe(
+      (response) => {
+        console.log('Dados salvos com sucesso:', response);
         this.contaBancaria.prestador = response;
-        this.contaPrestService.create(this.contaBancaria).subscribe((response) => {
-          console.log(response);
-          this.router.navigate(["/tela-inicial-prest"]);
-        }, (error) => {
-          console.error(error);
-          // show error message
-        });
-      }, (error) => {
-        console.error(error);
-        // show error message
-      });
-    }
+        this.contaPrestService.create(this.contaBancaria).subscribe(
+          (response) => {
+            console.log('Conta bancária salva com sucesso:', response);
+            this.router.navigate(['/tela-inicial-prest']);
+          },
+          (error) => {
+            console.error('Erro ao salvar conta bancária:', error);
+          }
+        );
+      },
+      (error) => {
+        console.error('Erro ao salvar dados:', error);
+      }
+    );
+  }
 
 
   ngOnInit(): void {
@@ -74,7 +102,8 @@ export class CadastroPrestComponent {
       contaPrestador: {} as ContaPrestador,
       dataNascimento: new Date(),
       fotoPerfil: null,
-      sobreMim: ''
+      sobreMim: '',
+      id_usuario: 0
     }
     // Referencie o botão e adicione o listener ao evento de clique
     const toastTrigger = document.getElementById('liveToastBtn');

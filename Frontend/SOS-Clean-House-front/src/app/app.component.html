@@ -1,8 +1,12 @@
 <body>
   <app-header></app-header>
-  <app-filtro *ngIf="isVisivel"></app-filtro>
+  <div *ngIf="isPrestador()">
+    <app-filtro-prest></app-filtro-prest>
+  </div>
+  <div *ngIf="isCliente()">
+    <app-filtro></app-filtro>
+  </div>
   <app-line></app-line>
-  
   <main>
     <router-outlet>
     </router-outlet>

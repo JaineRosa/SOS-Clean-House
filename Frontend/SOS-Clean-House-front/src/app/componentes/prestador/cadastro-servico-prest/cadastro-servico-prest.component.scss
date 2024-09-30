@@ -64,7 +64,9 @@
 //     border-radius: 4px;
 
 // }
-
+.form-check{
+margin-left: 40px;
+}
 .form-check-label {
     display: inline-block;
     opacity: 1;
@@ -77,45 +79,84 @@ h2 {
 }
 
 h4 {
-    margin: 16px;
+    margin: 8px;
+    margin-left: 16px;
 }
 
 .wizard {
-
-    width: 900px;
+    height: 360px;
+    max-width:  900px;
     margin: 60px auto;
     padding: 32px 60px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 32px;
     border: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-
+    position: relative;
 }
 
 .wizard-step {
     margin-bottom: 20px;
+    
 }
+
 
 .display {
-    display: flex;
-    justify-content: space-evenly;
+   display: flex;
+   padding: 10px;
+   padding-left: 30px;
 }
 
-.btn-custom {
-    background-color: #0A1EA6;
+.btn-prev {
+    position: absolute;
+    bottom: 0;
+    left: 220px;
     margin: 20px;
+    background-color: #0a1fa6eb;
+    border: #0A1EA6 solid 1px;
     color: white;
-    border-radius: 20px;
+    border-radius: 32px;
     padding: 10px 20px;
-    display: inline-f;
-    justify-content: center;
 }
 
-.btn-custom:hover {
+.btn-next {
+    position: absolute;
+    bottom: 0;
+    right: 220px;
+    margin: 20px;
+    background-color: #0A1EA6;
+    border: #0A1EA6 solid 1px;
+    color: white;
+    border-radius: 32px;
+    padding: 10px 20px;
+}
+
+// .btn-custom {
+
+//     background-color: #0A1EA6;
+//     margin: 20px;
+//     color: white;
+//     border-radius: 20px;
+//     padding: 10px 20px;
+//     display: inline-f;
+//     justify-content: center;
+//     position: absolute; /* Adicione essa linha */
+//     bottom: 0; 
+// }
+.btn-prev:hover {
+    background-color: #0000cc;
+    border-color: #0000cc;
+}
+
+.btn-next:hover {
     background-color: #0000cc;
     border-color: #0000cc;
 }
 .custom-input{
     border: #0A1EA6 solid 1px;
     border-radius: 8px;
+    margin-left: 130px ;
+}
+h6{
+    margin-left: 110px;
 }

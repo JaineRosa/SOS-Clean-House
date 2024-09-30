@@ -1,6 +1,5 @@
 <div>
-    <app-card-pesquisar></app-card-pesquisar>
-    <app-card-pesquisar></app-card-pesquisar>
-    <app-card-pesquisar></app-card-pesquisar>
-    <app-card-pesquisar></app-card-pesquisar>
+    <app-card-pesquisar 
+        *ngFor="let servico of listaServicos"
+        [servico]="servico"></app-card-pesquisar>
 </div>

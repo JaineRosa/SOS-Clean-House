@@ -28,4 +28,7 @@ public class PrestadorService {
     public void delete(Prestador prestador){
         prestadorRepository.delete(prestador);
     }
+    public Prestador validarLogin(String email, String senha){
+        return prestadorRepository.validarLogin(email, senha);
+    }
 }

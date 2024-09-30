@@ -1,6 +1,7 @@
 import { Chat } from "./Chat";
 
 export interface Usuario{
+    id_usuario:number,
     id:number;
     nomeCompleto: string;
     endereco: string;

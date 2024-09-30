@@ -3,29 +3,26 @@
       <div class="profile-card">
        <h4>
         <strong>
-         Profissional: Juliana Santos
+         Profissional: {{servico.prestador?.nomeCompleto}}
         </strong>
       </h4>
        <p>
-        50 anos de idade, 5 anos de experiência
+        {{servico.prestador.tempoExperiencia}} anos de experiência
        </p>
        <img alt="Profile picture of Juliana Santos" height="100" src="../../../../assets/img/perfil.jpg" width="100"/>
        <p>
-        Limpeza Doméstica, Limpeza Empresarial, Limpeza Pós-Obra, Passadeira.
+        {{servico.servico}}
        </p>
        <p>
-        Residência, Apartamento, Empresa, Loft.
+        Valor Diária: R$ {{servico.valorDiario4H}} a R$ {{servico.valorDiario8H}}
        </p>
        <p>
-        Valor Diária: R$ 150,00 a R$ 300,00
+        Horários Disponíveis: {{servico.horario?.horarioInicio}} às {{servico.horario?.horarioInicio}}
        </p>
        <p>
-        Horários Disponíveis: 7:00 às 18:00
+        Atividades Desenvolvidas: {{servico.atividades}}
        </p>
        <p>
-        Atividades Desenvolvidas: Arrumar camas; Cozinhar; Lavar Roupas; Limpar Janelas; Passar Roupa; Limpar Banheiro;
-       </p>
-       <p>
-        Tempo para a reserva: Reservas com 30min de antecedência.
+        Tempo para a reserva: Reservas com {{servico.tempoReserva}} de antecedência.
        </p>
       </div>

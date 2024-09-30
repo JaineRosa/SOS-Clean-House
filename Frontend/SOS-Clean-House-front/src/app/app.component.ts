@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Cliente } from './componentes/interface/Cliente';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,33 +9,32 @@ import { Cliente } from './componentes/interface/Cliente';
 })
 export class AppComponent {
   title = 'SOS-Clean-House-front';
-  isVisivel:  boolean = true;
 
-  tipoUsuario: string = 'cliente'; // Por padrão, cliente
+  constructor(private router: Router) { }
 
-  // Esta função pode ser chamada após o login para atualizar o tipo de usuário
-  atualizarTipoUsuario(tipo: string) {
-    this.tipoUsuario = tipo;
+  isPrestador(): boolean {
+    const userType = sessionStorage.getItem("userType");
+    const currentRoute = this.router.url;
+    return userType === "prestador" && currentRoute !== '/perfil-prest';
   }
 
-  ngOnInit(): void { 
+  isCliente(): boolean {
+    const userType = sessionStorage.getItem("userType");
+    const currentRoute = this.router.url;
+    return userType !== "prestador" && currentRoute !== '/perfil-cliente';
+  }
+
+  ngOnInit(): void {
     const usuario = sessionStorage.getItem("user")
-    if(usuario){
+    if (usuario) {
       console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA")
       console.log(usuario);
-      this.isVisivel= false
       
-    }else{
+
+    } else {
       console.log("NAOOOOOOOOOOOOOOOOOOOOO")
     }
   }
-  // ngOnChange(): void { 
-  //   const usuario = sessionStorage.getItem("user")
-  //   if(usuario){
-  //     console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-  //   }else{
-  //     console.log("NAOOOOOOOOOOOOOOOOOOOOO")
-  //   }
-  // }
+
 
 }

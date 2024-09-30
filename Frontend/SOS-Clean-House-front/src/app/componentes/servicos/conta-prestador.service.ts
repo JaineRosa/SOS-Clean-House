@@ -33,4 +33,8 @@ export class ContaPrestadorService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  findByPrestadorId(id: number): Observable<ContaPrestador> {
+    return this.http.get<ContaPrestador>(`${this.apiUrl}/prestador/${id}`);
+  }
 }

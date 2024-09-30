@@ -1,3 +1,4 @@
+import { Agendamento } from "./Agendamento";
 import { Cliente } from "./Cliente";
 import { Servico } from "./Servico";
 
@@ -10,6 +11,6 @@ export interface EnderecoServico {
     cep: number;
     observacao: string;
     cliente: Cliente;
-    servico: Servico;
+    enderecoAgendamento: Agendamento;
     servicoReference: Servico;
   }

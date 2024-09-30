@@ -106,3 +106,48 @@ label{
         margin-top: 20px;
     }
 }
+
+
+ngb-datepicker {
+    width: 100%; /* make the date picker full width */
+    padding: 10px;
+    border: solid 1px white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 32px;
+  }
+  
+  ngb-datepicker::ng-deep .ngb-dp-header {
+    background-color: white; /* style the date picker header */
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  ngb-datepicker::ng-deep .ngb-dp-weekday {
+    color: #0A1EA6;
+    width: 50px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  ngb-datepicker::ng-deep .ngb-dp-weekdays {
+    width: 338px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  ngb-datepicker::ng-deep .form-select {
+    margin: 8px;
+  }
+  
+  ngb-datepicker::ng-deep .ngb-dp-day {
+    width: 50px; /* adjust the day cell width */
+    height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  ngb-datepicker::ng-deep .ngb-dp-day:hover {
+    background-color: #f0f0f0; /* hover effect for day cells */
+  }

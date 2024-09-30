@@ -29,7 +29,7 @@ export class CadastroClienteComponent implements OnInit {
 
 
   cliente: Cliente = {
-    id:0,
+    id: 0,
     nomeCompleto: '',
     endereco: '',
     telefone: '',
@@ -41,7 +41,9 @@ export class CadastroClienteComponent implements OnInit {
     fotoPerfil: null,
     chats: [],
     sexo: '',
-    clienteCartoes:[]
+    clienteCartoes: [],
+    usuario: {} as Usuario,
+    id_usuario: 1
   }
 
   ngOnInit(): void {

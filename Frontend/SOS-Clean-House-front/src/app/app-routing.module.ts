@@ -35,14 +35,15 @@ import { TelaInicialPrestComponent } from './componentes/prestador/tela-inicial-
 import { GanhosPrestComponent } from './componentes/prestador/ganhos-prest/ganhos-prest.component';
 import { PerfilPrestComponent } from './componentes/prestador/perfil-prest/perfil-prest.component';
 import { CadastroServicoPrestComponent } from './componentes/prestador/cadastro-servico-prest/cadastro-servico-prest.component';
+import { PerfilSairPrestComponent } from './componentes/prestador/perfil-sair-prest/perfil-sair-prest.component';
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/tela-inicial', pathMatch: 'full' }, 
   { path: 'tela-inicial', component: TelaInicialComponent },
   { path: 'pesquisar', component: PesquisarComponent },
-  { path: 'reservando', component:ReservandoComponent },
-  { path: 'pagar', component: PagarComponent },
+  { path: 'reservando/:id', component:ReservandoComponent },
+  { path: 'pagar/:id', component: PagarComponent },
   { path: 'resumo-reserva', component: ResumoReservaComponent },  
   { path: 'tela-inicial-logado', component: TelaInicialLogadoComponent },
   { path: 'cadastrar', component: CadastrarComponent },
@@ -54,30 +55,8 @@ const routes: Routes = [
   { path: 'ganhos-prest', component: GanhosPrestComponent },
   { path: 'perfil-prest', component: PerfilPrestComponent },
   { path: 'cadastro-servico-prest', component: CadastroServicoPrestComponent },
-
-
-  
-  
-  { path: 'app.component', component: AppComponent },
-  { path: 'cadastro-cliente', component: CadastroClienteComponent },
-  { path: 'calendario', component: CalendarioComponent },
-  { path: 'card-prest-contratar', component: CardPrestContratarComponent },
-  { path: 'cards', component: CardsComponent },
-  { path: 'cards-prestador-ja-contratados', component: CardsPrestadorJaContratadosComponent},
-  { path: 'cartao-credito', component: CartaoCreditoComponent },
-  { path: 'filtro', component: FiltroComponent },
-  { path: 'footer', component: FooterComponent },
-  { path: 'header', component: HeaderComponent },
-  { path: 'horario', component: HorarioComponent },
-  { path: 'line', component: LineComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'novidades', component: NovidadesComponent },
-  { path: 'pagamento', component: PagamentoComponent },
-  { path: 'perfil', component: PerfilComponent },
-  { path: 'perfil-cliente', component: PerfilClienteComponent },
-  { path: 'reserva', component: ReservaComponent },
-  { path: 'resumo', component: ResumoComponent },
-  { path: 'tipo-limpeza', component: TipoLimpezaComponent },
+  { path: 'perfil-sair-prest', component: PerfilSairPrestComponent },
+  { path: 'perfil-cliente', component: PerfilClienteComponent},
 
 ];
 

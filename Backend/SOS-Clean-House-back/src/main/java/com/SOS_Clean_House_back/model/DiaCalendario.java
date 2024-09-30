@@ -1,5 +1,6 @@
 package com.SOS_Clean_House_back.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +25,7 @@ public class DiaCalendario {
     private Boolean isMeioTarde;
     private Integer taxaExtraMeia;
     private List<String> diasDaSemana;
+
 
     @ManyToOne
     @JoinColumn(name = "prestador_id")

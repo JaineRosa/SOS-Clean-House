@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { EnderecoServico } from '../../interface/EnderecoServico';
 import { Cliente } from '../../interface/Cliente';
 import { Servico } from '../../interface/Servico';
@@ -16,6 +16,8 @@ import { DiaCalendarioService } from '../../servicos/dia-calendario.service';
 import { EnderecoServicoService } from '../../servicos/endereco-servico.service';
 import { response } from 'express';
 import { AgendamentoService } from '../../servicos/agendamento.service';
+import { Usuario } from '../../interface/Usuario';
+import { ClienteService } from '../../servicos/cliente.service';
 
 @Component({
   selector: 'app-reserva',
@@ -25,41 +27,47 @@ import { AgendamentoService } from '../../servicos/agendamento.service';
 export class ReservaComponent implements OnInit {
 
   atividades: string[] = [];
+  selectedPeriod: string = 'Manhã';
+  valorAgendamento: string = '';
+  cliente!: Cliente;
+  form: FormGroup;
 
-  ngOnInit(): void {
-    this.atividades = [
-			'Arrumar a cama',
-			'Limpar a cozinha',
-			'Lavar roupas',
-			'Passar Roupas',
-			'Lavar cortinas',
-			'Limpar a varanda',
-			'Varrer chão',
-			'Recolher lixo',
-			'Trocar roupas de cama',
-			'Organizar armários',
-			'Limpar banheiro',
-			'Passar pano no chão',
-			'Limpar geladeira',
-			'Tirar o pó',
-			'Limpar janelas e vidros'
-		];
-    this.atualizarCheckboxes();
+  agendamento: Agendamento = {
+    id: 0,
+    status: false,
+    dataAgendamento: new Date(),
+    dataServico: new Date,
+    enderecoServico: {} as EnderecoServico,
+    servico: {} as Servico,
+    cliente: {} as Cliente,
+    prestador: {} as Prestador,
+    atividadesAgendadas: [],
+    horarioAgendamento: ''
   }
 
-  private atualizarCheckboxes(): void {
-    const control = <FormArray>this.form.get('atividades');
-    this.atividades.forEach(() => control.push(this.fb.control(false)));
-  }
+  enderecoServico: EnderecoServico = {
+    id: 0,
+    rua: '',
+    numero: 0,
+    bairro: '',
+    cidade: '',
+    cep: 0,
+    observacao: '',
+    cliente: {} as Cliente,
+    enderecoAgendamento: {} as Agendamento,
+    servicoReference: {} as Servico
+  };
 
-  onCheckboxChange(index: number, event: any): void {
-    const control = <FormArray>this.form.get('atividades');
-    control.at(index).setValue(event.target.checked);
-  }
+  @Input()
+  servico!: Servico;
 
-  selectedPeriod: string | null = null;
-
-  constructor(private fb: FormBuilder, private router: Router, private servicoService: ServicoService, private enderecoServicoService: EnderecoServicoService, private agendamentoService: AgendamentoService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private servicoService: ServicoService,
+    private enderecoServicoService: EnderecoServicoService,
+    private agendamentoService: AgendamentoService,
+    private clienteSercive: ClienteService) {
     this.form = this.fb.group({
       enderecoServico: this.fb.group({
         cep: [''],
@@ -72,97 +80,45 @@ export class ReservaComponent implements OnInit {
     });
   }
 
+  ngOnInit(): void {
+    const idCliente = Number(sessionStorage.getItem('cliente-id'));
+    this.clienteSercive.findById(idCliente).subscribe(retorno => {
+      this.cliente = retorno;
+    });
+  }
+
+  ngAfterViewInit() {
+    this.atividades = this.servico.atividades;
+    this.atualizarCheckboxes();
+    this.setValorAgendamento();
+  }
+
+  private atualizarCheckboxes(): void {
+    const control = <FormArray>this.form.get('atividades');
+    this.atividades.forEach(() => control.push(this.fb.control(false)));
+  }
+
+  onCheckboxChange(index: number, event: any): void {
+    const control = <FormArray>this.form.get('atividades');
+    control.at(index).setValue(event.target.checked);
+  }
+
   selectPeriod(period: string): void {
     this.selectedPeriod = period;
+    this.setValorAgendamento();
   }
 
-  agendamento: Agendamento = {
-    id: 0,
-    status: false,
-    dataAgendamento: new Date,
-    dataservico: {} as DiaCalendario,
-    enderecoServico: {} as EnderecoServico,
-    servico: {} as Servico,
-    cliente: {} as Cliente,
-    prestador: {} as Prestador,
-    servicosRelacionados: []
+  setValorAgendamento() {
+    const meia = this.servico.valorDiario4H;
+    const inteira = this.servico.valorDiario8H
+    if (this.selectedPeriod == 'Manhã' || this.selectedPeriod == 'Tarde') {
+      this.valorAgendamento = meia;
+    }
+    if (this.selectedPeriod == 'Integral') {
+      this.valorAgendamento = inteira;
+    }
   }
-  cliente: Cliente = {
-    id: 202,
-    sexo: '',
-    clienteCartoes: [],
-    nomeCompleto: '',
-    endereco: '',
-    telefone: '',
-    dataNascimento: new Date,
-    cpf: '',
-    email: '',
-    senha: '',
-    confirmarSenha: '',
-    fotoPerfil: null,
-    chats: []
-  }
-  prestador: Prestador = {
-    id: 53,
-    tempoExperiencia: 0,
-    antecedentesCriminais: null,
-    foto: null,
-    documentos: null,
-    agendamentos: [],
-    atividadesDesenvolvidas: [],
-    diaCalendarios: [],
-    horarios: [],
-    nomeCompleto: '',
-    endereco: '',
-    telefone: '',
-    cpf: '',
-    email: '',
-    senha: '',
-    confirmarSenha: '',
-    chats: [],
-    contaPrestador: {} as ContaPrestador,
-    dataNascimento: new Date(),
-    fotoPerfil: null,
-    sobreMim: ''
-  };
-  horario: Horario = {
-    id: 0,
-    horarioInicio: "",
-    horarioFim: '',
-    meioPeriodo: false,
-    servico: {} as Servico,
-    prestador: {} as Prestador
-  }
-  servico: Servico = {
-    id: 0,
-    valorDiario4H: '',
-    valorDiario8H: '0',
-    tempoReserva: '',
-    observacoes: '',
-    horarios: [],
-    agendamento: {} as Agendamento,
-    enderecoServico: {} as EnderecoServico,
-    agendamentosRelacionados: [],
-    servico: '',
-    diasDaSemana: [],
-    atividades: [],
-    prestador: {} as Prestador
-  }
-  enderecoServico: EnderecoServico = {
-    id: 0,
-    rua: '',
-    numero: 0,
-    bairro: '',
-    cidade: '',
-    cep: 0,
-    observacao: '',
-    cliente: {} as Cliente,
-    servico: {} as Servico,
-    servicoReference: {} as Servico
-  };
 
-  form: FormGroup;
- 
 
   pagar(event: any) {
     event.preventDefault();
@@ -173,7 +129,7 @@ export class ReservaComponent implements OnInit {
   saveReserva(): void {
 
     const valoresAtividades = this.form.get('atividades')?.value;
-		this.servico.atividades = this.atividades.filter((atividade, index) => valoresAtividades[index]);
+    this.servico.atividades = this.atividades.filter((atividade, index) => valoresAtividades[index]);
 
     const enderecoForm = this.form.get('enderecoServico')?.value;
     this.enderecoServico = {
@@ -185,45 +141,38 @@ export class ReservaComponent implements OnInit {
       observacao: enderecoForm.observacao,
       numero: enderecoForm.numero || '',
       cliente: this.cliente,
-      servico: this.servico,
+      enderecoAgendamento: {} as Agendamento,
       servicoReference: {} as Servico
     };
 
-    const servico: Servico = {
-      id: 0,
-      valorDiario4H: this.form.get('valorDiario4H')?.value,
-      valorDiario8H: this.form.get('valorDiario8H')?.value,
-      tempoReserva: this.form.get('tempoReserva')?.value,
-      observacoes: this.form.get('enderecoServico.observacao')?.value,
-      horarios: [this.horario],
-      enderecoServico: this.enderecoServico,
-      atividades: this.form.get('atividades')?.value,
-      agendamentosRelacionados: [],
-      agendamento: {} as Agendamento,
-      servico: '',
-      diasDaSemana: [],
-      prestador: this.prestador
-    };
+    this.agendamento.servico = this.servico;
+    this.agendamento.cliente = this.cliente;
+    this.agendamento.atividadesAgendadas = this.atividades.filter((atividade, index) => valoresAtividades[index]);;
 
-       
-    this.servicoService.create(servico).subscribe(
-      response => {
-        console.log('Serviço salvo com sucesso:', response);
+    this.agendamentoService.add(this.agendamento).subscribe(novoAgendamento => {
 
-        this.enderecoServicoService.create(this.enderecoServico).subscribe(
-          enderecoResponse => {
-            console.log('Endereço salvo com sucesso:', enderecoResponse);
-          },
-          error => {
-            console.error('Erro ao salvar endereço:', error);
-          }
-        );
-      },
-      error => {
-        console.error('Erro ao salvar serviço:', error);
-      }
-    );
+      this.salvarEndereco(novoAgendamento);
+      this.router.navigate(['/pagar', novoAgendamento.id]);  // Redirecionar após salvar
 
-    this.router.navigate(['/pagar']);  // Redirecionar após salvar
+    });
   }
+
+  salvarEndereco(novoAgendamento: Agendamento) {
+    this.enderecoServico.enderecoAgendamento = novoAgendamento;
+    if (this.enderecoServico.id && this.enderecoServico.id != 0) {
+      this.enderecoServicoService.update(this.enderecoServico).subscribe(() => {
+        console.log('ALTEROU');
+      });
+    } else {
+      this.enderecoServicoService.create(this.enderecoServico).subscribe(() => {
+        console.log('CADASTROU');
+      });
+    }
+
+  }
+
+  getData(data: Date) {
+    this.agendamento.dataServico = data;
+  }
+
 }

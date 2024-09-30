@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Servico } from '../../interface/Servico';
 
 @Component({
   selector: 'app-card-pesquisar',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './card-pesquisar.component.scss'
 })
 export class CardPesquisarComponent {
+
+  @Input()
+  servico!: Servico;
 
 }

@@ -2,6 +2,7 @@ package com.SOS_Clean_House_back.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,10 +30,8 @@ public class EnderecoServico {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-
-
-
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToOne
-    @JoinColumn(name = "servico_id")
-    private Servico servicoReference;
+    @JoinColumn(name = "agendamento_id")
+    private Agendamento enderecoAgendamento;
 }

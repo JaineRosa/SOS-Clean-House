@@ -67,29 +67,30 @@
         /* Remove a margem direita do último item */
     }
 }
-
-
 .toast {
     background-color: #0A1EA6;
     color: white;
     border-radius: 32px;
     opacity: 1;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-
-    .toast-body {
-        text-align: center;
-        font-size: 24px;
-        color: white;
-    }
-    .btn-close {
-        margin-left: 300px;
-        margin-top: 8px;
-    }
-
-}
-
-
-
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    z-index: 1055;
+  }
+  
+  .toast-header {
+    background-color: #0A1EA6;
+    color: white;
+    border-radius: 32px;
+  }
+  .toast-body {
+            text-align: center;
+            font-size: 24px;
+            color: white;
+        }
 
 img {
     border-radius: 50%;

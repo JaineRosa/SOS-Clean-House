@@ -5,6 +5,8 @@ import { ClienteCartaoService } from '../../servicos/cliente-cartao.service';
 import { Router } from '@angular/router';
 import { ClienteCartao } from '../../interface/ClienteCartao';
 import { Cliente } from '../../interface/Cliente';
+import { Usuario } from '../../interface/Usuario';
+
 
 
 @Component({
@@ -26,7 +28,9 @@ export class CartaoCreditoComponent {
     senha: '',
     confirmarSenha: '',
     fotoPerfil: null,
-    chats: []
+    chats: [],
+    usuario: {} as Usuario,
+    id_usuario: 0
   }
 clientecartao: ClienteCartao = {
   id: 0,

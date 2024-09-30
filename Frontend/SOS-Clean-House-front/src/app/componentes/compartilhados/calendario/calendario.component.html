@@ -1,7 +1,7 @@
 <div>
   <div class="container mt-3">
     <h3>Selecione uma data:</h3>
-    <ngb-datepicker (select)="onDateSelect($event)">
+    <ngb-datepicker (dateSelect)="onDateSelect($event)">
       <ng-template ngbDatepickerDay="day" let-date="date">
         <span [ngClass]="{'bg-primary text-light': isSelected(date)}">
           {{ date.day }}

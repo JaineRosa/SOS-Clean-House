@@ -8,11 +8,11 @@ export interface Agendamento {
     id: number;
     status: boolean;
     dataAgendamento: Date;
-  
-    dataservico: DiaCalendario;
+    horarioAgendamento: string;
+    dataServico: Date;
     enderecoServico: EnderecoServico;
     servico: Servico;
     cliente: Cliente;
     prestador: Prestador;
-    servicosRelacionados: Servico[];
+    atividadesAgendadas: string[];
   }

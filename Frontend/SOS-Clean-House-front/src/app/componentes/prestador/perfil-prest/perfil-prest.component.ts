@@ -2,12 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import * as bootstrap from 'bootstrap'
 import { Prestador } from '../../interface/Prestador';
 import { ContaPrestador } from '../../interface/ContaPrestador';
+import { PrestadorService } from '../../servicos/prestador.service';
+import { ContaPrestadorService } from '../../servicos/conta-prestador.service';
+import { response } from 'express';
 @Component({
   selector: 'app-perfil-prest',
   templateUrl: './perfil-prest.component.html',
   styleUrl: './perfil-prest.component.scss'
 })
-export class PerfilPrestComponent implements OnInit{
+export class PerfilPrestComponent implements OnInit {
+
+  isEdicao: boolean = false;
+
+  constructor(private prestadorService: PrestadorService, private contaBancariaService: ContaPrestadorService) { }
 
   prestador: Prestador = {
     id: 0,
@@ -30,13 +37,14 @@ export class PerfilPrestComponent implements OnInit{
     contaPrestador: {} as ContaPrestador,
     dataNascimento: new Date(),
     fotoPerfil: new Blob(),
-    sobreMim: ''
+    sobreMim: '',
+    id_usuario: 0
   }
   contaBancaria: ContaPrestador = {
     id: 0,
     nomeTitular: '',
-    agencia: 0,
-    conta: 0,
+    agencia: '',
+    conta: '',
     cnpj: '',
     cpf: '',
     prestador: {} as Prestador
@@ -44,21 +52,78 @@ export class PerfilPrestComponent implements OnInit{
 
 
   ngOnInit(): void {
-    // Referencie o botão e adicione o listener ao evento de clique
-    const toastTrigger = document.getElementById('liveToastBtn');
-    const toastLiveExample = document.getElementById('liveToast');
 
-    if (toastTrigger) {
-      toastTrigger.addEventListener('click', () => {
+    const prestadorId = sessionStorage.getItem('prestador-id');
+
+
+    if (prestadorId) {
+      // Chamar o serviço para buscar o prestador pelo ID
+      this.prestadorService.findById(+prestadorId).subscribe(
+        (retorno: Prestador) => {
+          this.prestador = retorno;
+
+          this.contaBancariaService.findByPrestadorId(this.prestador.id).subscribe((contaBancaria) => {
+            this.contaBancaria = contaBancaria
+          });
+
+        },
+        (error) => {
+          console.error('Erro ao buscar prestador:', error);
+        }
+      );
+    } else {
+      console.error("Prestador ID não encontrado no sessionStorage");
+      return;
+    }
+
+  }
+  enableEditing() {
+    this.isEdicao = true;
+  }
+
+  salvar() {
+
+    this.prestadorService.update(this.prestador).subscribe(
+      (prestadorAtualizado) => {
+        console.log('Perfil atualizado com sucesso');
+        console.log(this.prestador);
+
+        this.salvarConta(prestadorAtualizado);
+
+        const toastLiveExample = document.getElementById('liveToast');
         if (toastLiveExample) {
           const toast = new bootstrap.Toast(toastLiveExample);
           toast.show();
-          
+
           setTimeout(() => {
             toast.hide();
-          }, 1000);
+          }, 3000);  // O toast será exibido por 3 segundos
         }
+        this.isEdicao = false;
+      },
+      (error) => {
+        console.error('Erro ao atualizar perfil', error);
+      }
+    );
+  }
+
+  salvarConta(prestador: Prestador) {
+
+    this.contaBancaria.prestador = prestador;
+
+    if (this.contaBancaria.id && this.contaBancaria.id != 0) {
+      this.contaBancariaService.update(this.contaBancaria).subscribe((resposta) => {
+        console.log(resposta);
+      }, (error) => {
+        console.error('Erro ao atualizar perfil', error);
+      });
+    } else {
+      this.contaBancariaService.create(this.contaBancaria).subscribe((resposta) => {
+        console.log(resposta);
+      }, (error) => {
+        console.error('Erro ao salvar perfil', error);
       });
     }
   }
-}
+
+}  

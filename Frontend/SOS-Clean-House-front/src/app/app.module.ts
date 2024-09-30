@@ -47,6 +47,8 @@ import { PerfilPrestComponent } from './componentes/prestador/perfil-prest/perfi
 import { CadastroServicoPrestComponent } from './componentes/prestador/cadastro-servico-prest/cadastro-servico-prest.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { LoginPrestComponent } from './componentes/prestador/login-prest/login-prest.component';
+import { PerfilSairPrestComponent } from './componentes/prestador/perfil-sair-prest/perfil-sair-prest.component';
+import { PerfilSairClienteComponent } from './componentes/compartilhados/perfil-sair-cliente/perfil-sair-cliente.component';
 
 
 
@@ -91,6 +93,9 @@ import { LoginPrestComponent } from './componentes/prestador/login-prest/login-p
         PerfilPrestComponent,
         CadastroServicoPrestComponent,
         LoginPrestComponent,
+        PerfilSairPrestComponent,
+        PerfilSairClienteComponent,
+        
     ],
     bootstrap: [AppComponent],
 

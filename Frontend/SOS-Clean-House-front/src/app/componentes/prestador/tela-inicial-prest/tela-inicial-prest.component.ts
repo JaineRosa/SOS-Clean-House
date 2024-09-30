@@ -29,7 +29,8 @@ export class TelaInicialPrestComponent {
     contaPrestador: {} as ContaPrestador,
     dataNascimento: new Date(),
     fotoPerfil: new Blob(),
-    sobreMim: ''
+    sobreMim: '',
+    id_usuario: 0
   }
 
   showTab(tabId: string, event: Event) {

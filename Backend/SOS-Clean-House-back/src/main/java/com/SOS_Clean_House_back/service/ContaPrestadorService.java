@@ -30,4 +30,8 @@ public class ContaPrestadorService {
     public void delete(ContaPrestador contaPrestador){
         contaPrestadorRepository.delete(contaPrestador);
     }
+
+    public ContaPrestador findByPrestadorId(Integer id){
+        return contaPrestadorRepository.findByPrestadorId(id);
+    }
 }

@@ -1,11 +1,13 @@
 package com.SOS_Clean_House_back.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigInteger;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Data @Builder
@@ -16,11 +18,12 @@ public class ContaPrestador {
     private Integer id;
 
     private String nomeTitular;
-    private Integer agencia;
-    private Integer conta;
+    private String agencia;
+    private String conta;
     private String cnpj;
     private String cpf;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToOne
     @JoinColumn(name = "prestador_id")
     private Prestador prestador;

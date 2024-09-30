@@ -49,9 +49,20 @@ header {
     border: 0;
     }
   
-    #exampleModal{
+    #exampleModal {
         position: fixed;
         margin-left: 490px;
         margin-top: 110px;
     }
+    #exampleModalCliente {
+        position: fixed;
+        margin-left: 490px;
+        margin-top: 110px;
+    }
+    #exampleModalPrestador {
+        position: fixed;
+        margin-left: 490px;
+        margin-top: 110px;
+    }
+    
 }

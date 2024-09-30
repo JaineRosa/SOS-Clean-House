@@ -38,4 +38,8 @@ export class PrestadorService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  validarLogin(credenciais: any): Observable<Prestador> {
+    return this.http.post<Prestador>(`${this.apiUrl}/login`, credenciais);
+  }
 }

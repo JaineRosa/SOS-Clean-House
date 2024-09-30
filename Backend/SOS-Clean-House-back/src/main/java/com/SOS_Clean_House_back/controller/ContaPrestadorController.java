@@ -40,5 +40,10 @@ public class ContaPrestadorController {
         contaPrestadorService.delete(contaPrestador);
         return ResponseEntity.ok(contaPrestador);
     }
+
+    @GetMapping("/prestador/{id}")
+    public ResponseEntity<ContaPrestador> findByPrestadorId(@PathVariable Integer id){
+        return  ResponseEntity.ok(contaPrestadorService.findByPrestadorId(id));
+    }
     
 }

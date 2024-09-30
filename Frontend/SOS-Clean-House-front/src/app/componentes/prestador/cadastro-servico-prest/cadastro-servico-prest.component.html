@@ -3,11 +3,13 @@
     <div class="wizard-step" *ngIf="currentStep === 1">
 
         <h4>Tipos de Serviços:</h4>
+
         <form [formGroup]="form">
-            <div formArrayName="tiposServico" class="row">
-                <div *ngFor="let tiposServico of tiposServico; let i = index" class="col-md-6">
+            <div formArrayName="tiposServico" class="row mt-5">
+                <div *ngFor="let tiposServico of tiposServico; let i = index" class="col-md-6 mt-1">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [formControlName]="i" (change)="selecionarTipoServico($event, i)" [id]="'tiposServico' + i"/>
+                        <input class="form-check-input" type="checkbox" [formControlName]="i"
+                            (change)="selecionarTipoServico($event, i)" [id]="'tiposServico' + i" />
                         <label class="form-check-label" [for]="'tiposServico' + i">{{ tiposServico }}</label>
                     </div>
                 </div>
@@ -15,108 +17,120 @@
         </form>
         <div class="display">
             <button class="btn btn-custom" style="background-color: white;" (click)="prevStep()"></button>
-            <button class="btn btn-custom" (click)="nextStep()">Próximo</button>
+            <button class="btn-next" (click)="nextStep()">Próximo</button>
         </div>
     </div>
 
     <div class="wizard-step" *ngIf="currentStep === 2">
         <h4>Atividades Desenvolvidas:</h4>
         <form [formGroup]="form">
-            <div formArrayName="atividades" class="row">
-                <div *ngFor="let atividade of atividades; let i = index" class="col-md-4">
+
+            <div formArrayName="atividades" class="row mt-4">
+                <div *ngFor="let atividade of atividades; let i = index" class="col-md-4 mt-1 ">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [formControlName]="i"  [id]="'atividades' + i"/>
+                        <input class="form-check-input" type="checkbox" [formControlName]="i" [id]="'atividades' + i" />
                         <label class="form-check-label" [for]="'atividades' + i">{{ atividade }}</label>
                     </div>
                 </div>
             </div>
+
         </form>
         <div class="display">
-            <button class="btn btn-custom" (click)="prevStep()">Anterior</button>
-            <button class="btn btn-custom" (click)="nextStep()">Próximo</button>
+            <button class="btn-prev" (click)="prevStep()">Anterior</button>
+            <button class="btn-next" (click)="nextStep()">Próximo</button>
         </div>
     </div>
 
     <div class="wizard-step " *ngIf="currentStep === 3">
         <h4>Valores:</h4>
         <div class="display">
-            <div class="col-md-4">
-               
+            <div class="col-md-4 pt-5">
+
                 <input type="text" class="custom-input" placeholder="Valor da diária 4h."
-                                   [(ngModel)]="servico.valorDiario4H">
+                    [(ngModel)]="servico.valorDiario4H">
             </div>
-            <div class="col-md-4">
-                
+            <div class="col-md-4 pt-5">
+
                 <input type="text" class="custom-input" placeholder="Valor da diária 8h."
-                [(ngModel)]="servico.valorDiario8H">
-                   
+                    [(ngModel)]="servico.valorDiario8H">
+
             </div>
         </div>
         <div class="display">
-            <button class="btn btn-custom" (click)="prevStep()">Anterior</button>
-            <button class="btn btn-custom" (click)="nextStep()">Próximo</button>
+            <button class="btn-prev" (click)="prevStep()">Anterior</button>
+            <button class="btn-next" (click)="nextStep()">Próximo</button>
         </div>
     </div>
 
     <div class="wizard-step" *ngIf="currentStep === 4">
         <h4>Dias disponiveis:</h4>
         <form [formGroup]="form">
-            <div formArrayName="diasDaSemana" class="row">
-                <div *ngFor="let dia of diasDaSemana; let i = index" class="col-md-6">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [formControlName]="i"   [id]="'diasDaSemana' + i"/>
-                        <label class="form-check-label" [for]="'diasDaSemana' + i">{{ dia }}</label>
+            <div class="display">
+                <div formArrayName="diasDaSemana" class="row mx-5 pt-4 pl-5">
+                    <div *ngFor="let dia of diasDaSemana; let i = index" class="col-md-6  mt-1">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" [formControlName]="i"
+                                [id]="'diasDaSemana' + i" />
+                            <label class="form-check-label" [for]="'diasDaSemana' + i">{{ dia }}</label>
+                        </div>
                     </div>
                 </div>
             </div>
         </form>
         <div class="display">
-            <button class="btn btn-custom" (click)="prevStep()">Anterior</button>
-            <button class="btn btn-custom" (click)="nextStep()">Próximo</button>
+            <button class="btn-prev" (click)="prevStep()">Anterior</button>
+            <button class="btn-next" (click)="nextStep()">Próximo</button>
         </div>
     </div>
 
     <div class="wizard-step" *ngIf="currentStep === 5">
-    <h4>Tempo minímo para reserva:</h4>
-    <form [formGroup]="form">
-        <div formArrayName="temposReserva" class="row">
-            <div *ngFor="let tempo of temposReserva; let i = index" class="col-md-6">
-                <div class="form-check ">
-                    <input class="form-check-input" type="checkbox" [formControlName]="i"  (change)="selecionarTempoReserva($event, i)"  [id]="'temposReserva' + i"/>
-                    <label class="form-check-label" [for]="'temposReserva' + i">{{ tempo }}</label>
+        <h4>Tempo minímo para reserva:</h4>
+        <form [formGroup]="form">
+            <div class="display">
+                <div formArrayName="temposReserva" class="row mx-5 pt-4">
+                    <div *ngFor="let tempo of temposReserva; let i = index" class="col-md-6 mt-1 ">
+                        <div class="form-check ">
+                            <input class="form-check-input" type="checkbox" [formControlName]="i"
+                                (change)="selecionarTempoReserva($event, i)" [id]="'temposReserva' + i" />
+                            <label class="form-check-label" [for]="'temposReserva' + i">{{ tempo }}</label>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </form>
+        <div class="display">
+            <button class="btn-prev" (click)="prevStep()">Anterior</button>
+            <button class="btn-next" (click)="nextStep()">Próximo</button>
         </div>
-    </form>
-    <div class="display">
-        <button class="btn btn-custom" (click)="prevStep()">Anterior</button>
-        <button class="btn btn-custom" (click)="nextStep()">Próximo</button>
     </div>
-</div>
 
     <div class="wizard-step" *ngIf="currentStep === 6">
         <h4>Horario de trabalho:</h4>
         <form [formGroup]="form" class="display">
-            <div formArrayName="horarioInicio" class="row-6">
-                <div *ngFor="let inicio of horarioInicio; let i = index" class="col-md-12">
+            <div formArrayName="horarioInicio" class="row-6 mx-5 ">
+                <h6>Horário Início</h6>
+                <div *ngFor="let inicio of horarioInicio; let i = index" class="col-12 mx-5 mt-1">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [formControlName]="i" [id]="'horarioInicio' + i" (change)="selecionarHorarioInicio($event, i)"/>
+                        <input class="form-check-input" type="checkbox" [formControlName]="i" [id]="'horarioInicio' + i"
+                            (change)="selecionarHorarioInicio($event, i)" />
                         <label class="form-check-label" [for]="'horarioInicio' + i">{{ inicio }}</label>
                     </div>
                 </div>
             </div>
-            <div formArrayName="horarioFim" class="row-6">
-                <div *ngFor="let fim of horarioFim; let i = index" class="col-md-12">
+            <div formArrayName="horarioFim" class="row-6 mx-5">
+                <h6>Horário Fim</h6>
+                <div *ngFor="let fim of horarioFim; let i = index" class="col-12 mx-5">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [formControlName]="i" [id]="'horarioFim' + i" (change)="selecionarHorarioFim($event, i)" />
+                        <input class="form-check-input" type="checkbox" [formControlName]="i" [id]="'horarioFim' + i"
+                            (change)="selecionarHorarioFim($event, i)" />
                         <label class="form-check-label" [for]="'horarioFim' + i">{{ fim }}</label>
                     </div>
                 </div>
             </div>
         </form>
         <div class="display">
-            <button class="btn btn-custom" (click)="prevStep()">Anterior</button>
-            <button class="btn btn-custom" (click)="finishWizard()">Finalizar</button>
+            <button class="btn-prev" (click)="prevStep()">Anterior</button>
+            <button class="btn-next" (click)="finishWizard()">Finalizar</button>
         </div>
     </div>
 </div>

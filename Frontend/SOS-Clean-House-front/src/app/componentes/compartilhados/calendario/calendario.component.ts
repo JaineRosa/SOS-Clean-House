@@ -1,4 +1,8 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, TemplateRef, ViewChild } from '@angular/core';
+import { DiaCalendario } from '../../interface/DiaCalendario';
+import { DiaCalendarioService } from '../../servicos/dia-calendario.service';
+import { response } from 'express';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -7,10 +11,17 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
   styleUrls: ['./calendario.component.scss']
 })
 export class CalendarioComponent {
+
+  @Output() getData: EventEmitter<Date> = new EventEmitter;
+
   selectedDate: { year: number; month: number; day: number } | null = null;
+
+  constructor(private diaCalendarioService: DiaCalendarioService) {}
 
   onDateSelect(event: any): void {
     this.selectedDate = event;
+    const data: Date = new Date(`${this.selectedDate?.year}-${this.selectedDate?.month}-${this.selectedDate?.day}`);
+    this.getData.emit(data);
   }
 
   toDate(): Date | null {
@@ -27,4 +38,7 @@ export class CalendarioComponent {
       date.month === this.selectedDate.month && 
       date.day === this.selectedDate.day);
   }
+
+  
+
 }

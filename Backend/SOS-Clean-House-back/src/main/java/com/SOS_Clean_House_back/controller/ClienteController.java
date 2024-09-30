@@ -31,6 +31,7 @@ public class ClienteController {
         return ResponseEntity.ok(clienteService.save(cliente));
     }
 
+
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> update(@RequestBody Cliente cliente){
         return ResponseEntity.ok(clienteService.save(cliente));
