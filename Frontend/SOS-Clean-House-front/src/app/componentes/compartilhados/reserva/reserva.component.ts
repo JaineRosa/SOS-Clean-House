@@ -119,12 +119,13 @@ export class ReservaComponent implements OnInit {
     }
   }
 
+  
+  setHorarioFim(){
+    
 
-  pagar(event: any) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.router.navigate(['/pagar']);
   }
+
+
 
   saveReserva(): void {
 
@@ -156,6 +157,8 @@ export class ReservaComponent implements OnInit {
 
     });
   }
+
+  
 
   salvarEndereco(novoAgendamento: Agendamento) {
     this.enderecoServico.enderecoAgendamento = novoAgendamento;

@@ -8,52 +8,45 @@
                 <img alt="Profile picture of Juliana Santos" height="150" src="../../../../assets/img/perfil.jpg"
                     width="150" />
                 <h5 class="card-title">
-                    {{prestador.nomeCompleto}}
+                    {{agendamento.prestador.nomeCompleto}}
                 </h5>
                 <h6 class="card-subtitle mb-2">
                     600 metros de Distância
                 </h6>
                 <h6 class="card-subtitle mb-2">
-                    {{prestador.tempoExperiencia}} anos de experiência
+                    {{agendamento.prestador.tempoExperiencia}} anos de experiência
                 </h6>
             </div>
         </div>
         <div class="col-md-8">
             <div class="card">
                 <p>
-                    Data: 11 Fevereiro de 2024
+                    Data:{{agendamento.dataServico}}
                 </p>
                 <p>
-                    Horário Início: 7:00
+                    Horário Início: {{agendamento.horarioAgendamento}}
                 </p>
                 <p>
-                    Horário Término: 17:00
+                    Horário Término:
                 </p>
                 <p>
-                    Valor: 290,00
+                    Valor:{{agendamento.servico.valorDiario4H}}{{agendamento.servico.valorDiario8H}}
                 </p>
                 <p>
-                    Local: Rua Sete de Setembro 123. Ap.104
+                    Local: {{agendamento.enderecoServico.rua}}, {{agendamento.enderecoServico.bairro}}, {{agendamento.enderecoServico.cep}}
                 </p>
                 <p>
-                    Observações: Lorem ipsum dolor sit amet
+                    {{agendamento.servico.observacoes}}
                 </p>
                 <div>
                     <div class="form-check form-check-inline">
                         <input checked class="form-check-input" id="task1" type="checkbox" />
                         <label class="form-check-label" for="task1">
-                            Limpar a cozinha
+                        {{agendamento.atividadesAgendadas}}
                         </label>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input checked class="form-check-input" id="task2" type="checkbox" />
-                        <label class="form-check-label" for="task2">
-                            Arrumar a Cama
-                        </label>
-                    </div>
-                </div>
-                <div>
-                    <button class="btn btn-primary btn">Iniciar Chat</button>
+                <div *ngIf="agendamento.status == true">
+                    <button class="btn btn-primary btn" routerLink="/chat">Iniciar Chat</button>
                     <button type="button" class="btn btn-primary btn" data-bs-toggle="modal"
                         data-bs-target="#CancelarModal">Cancelar</button>
                 </div>

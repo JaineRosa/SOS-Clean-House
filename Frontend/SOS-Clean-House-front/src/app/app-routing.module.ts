@@ -36,6 +36,7 @@ import { GanhosPrestComponent } from './componentes/prestador/ganhos-prest/ganho
 import { PerfilPrestComponent } from './componentes/prestador/perfil-prest/perfil-prest.component';
 import { CadastroServicoPrestComponent } from './componentes/prestador/cadastro-servico-prest/cadastro-servico-prest.component';
 import { PerfilSairPrestComponent } from './componentes/prestador/perfil-sair-prest/perfil-sair-prest.component';
+import { ChatComponent } from './componentes/compartilhados/chat/chat.component';
 
 const routes: Routes = [
 
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: 'cadastro-servico-prest', component: CadastroServicoPrestComponent },
   { path: 'perfil-sair-prest', component: PerfilSairPrestComponent },
   { path: 'perfil-cliente', component: PerfilClienteComponent},
+  { path: 'chat', component: ChatComponent},
 
 ];
 

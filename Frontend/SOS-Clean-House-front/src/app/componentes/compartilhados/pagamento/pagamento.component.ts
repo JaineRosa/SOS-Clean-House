@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import * as bootstrap from 'bootstrap';
+import { Agendamento } from '../../interface/Agendamento';
 
 @Component({
   selector: 'app-pagamento',
@@ -8,6 +9,11 @@ import * as bootstrap from 'bootstrap';
   styleUrl: './pagamento.component.scss'
 })
 export class PagamentoComponent implements OnInit{
+
+  @Input()
+  novoAgendamento!: Agendamento;
+
+  
 
   ngOnInit(): void {
     // Referencie o botão e adicione o listener ao evento de clique

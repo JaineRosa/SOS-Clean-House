@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 import * as bootstrap from 'bootstrap';
 import { Prestador } from '../../interface/Prestador';
 import { PrestadorService } from '../../servicos/prestador.service';
+import { Agendamento } from '../../interface/Agendamento';
 @Component({
   selector: 'app-resumo',
   templateUrl: './resumo.component.html',
   styleUrl: './resumo.component.scss'
 })
 export class ResumoComponent implements OnInit {
+
+  @Input()
+  agendamento!: Agendamento;
 
   prestador: Prestador = {} as Prestador;
 

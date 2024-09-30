@@ -49,6 +49,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { LoginPrestComponent } from './componentes/prestador/login-prest/login-prest.component';
 import { PerfilSairPrestComponent } from './componentes/prestador/perfil-sair-prest/perfil-sair-prest.component';
 import { PerfilSairClienteComponent } from './componentes/compartilhados/perfil-sair-cliente/perfil-sair-cliente.component';
+import { ChatComponent } from './componentes/compartilhados/chat/chat.component';
 
 
 
@@ -95,6 +96,7 @@ import { PerfilSairClienteComponent } from './componentes/compartilhados/perfil-
         LoginPrestComponent,
         PerfilSairPrestComponent,
         PerfilSairClienteComponent,
+        ChatComponent,
         
     ],
     bootstrap: [AppComponent],
