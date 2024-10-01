@@ -21,7 +21,7 @@ public class Agendamento {
     private Boolean status;
     private String horarioAgendamento;
     private String horarioAgendamentoFim;
-//    private String valorAgendamento;
+    private String valorAgendamento;
     private List<String> atividadesAgendadas;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSX", timezone = "America/Sao_Paulo")

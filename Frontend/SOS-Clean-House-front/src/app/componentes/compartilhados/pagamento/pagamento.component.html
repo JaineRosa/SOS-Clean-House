@@ -11,7 +11,7 @@
         </button>
     </div>
     <div class="d-flex justify-content-center">
-        <button type="button" style="padding: 10px 120px;" class="submit-button " id="liveToastBtn" routerLink="/resumo-reserva">
+        <button type="button" style="padding: 10px 120px;" class="submit-button " id="liveToastBtn" [routerLink]="['/resumo-reserva', novoAgendamento.id]">
             Finalizar Pagamento
         </button>
     </div>

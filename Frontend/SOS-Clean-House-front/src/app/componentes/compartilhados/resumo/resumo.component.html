@@ -8,13 +8,13 @@
                 <img alt="Profile picture of Juliana Santos" height="150" src="../../../../assets/img/perfil.jpg"
                     width="150" />
                 <h5 class="card-title">
-                    {{agendamento?.prestador?.nomeCompleto}}
+                    {{agendamento?.servico?.prestador?.nomeCompleto}}
                 </h5>
                 <h6 class="card-subtitle mb-2">
                     600 metros de Distância
                 </h6>
                 <h6 class="card-subtitle mb-2">
-                    {{agendamento?.prestador?.tempoExperiencia}} anos de experiência
+                    {{agendamento?.servico?.prestador?.tempoExperiencia}} anos de experiência
                 </h6>
             </div>
         </div>
@@ -30,7 +30,7 @@
                     Horário Término: {{agendamento?.horarioAgendamentoFim}}
                 </p>
                 <p>
-                    Valor:  
+                    Valor:  {{agendamento.valorAgendamento}}
                 </p>
                 <p>
                     Local: {{agendamento?.enderecoServico?.rua}}, {{agendamento?.enderecoServico?.bairro}}, {{agendamento?.enderecoServico?.cep}}
@@ -64,7 +64,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Você tem certeza que deseja cancelar sua reserva com Juliana?</p>
+                <p>Você tem certeza que deseja cancelar sua reserva com {{agendamento?.servico?.prestador?.nomeCompleto}}?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="cancelarToastBtn" (click)="showToast()" data-bs-dismiss="modal">Sim</button>

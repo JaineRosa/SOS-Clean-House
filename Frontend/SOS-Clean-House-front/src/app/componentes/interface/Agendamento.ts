@@ -16,4 +16,5 @@ export interface Agendamento {
     cliente: Cliente;
     prestador: Prestador;
     atividadesAgendadas: string[];
+    valorAgendamento: string;
   }

@@ -44,7 +44,8 @@ export class ReservaComponent implements OnInit {
     prestador: {} as Prestador,
     atividadesAgendadas: [],
     horarioAgendamento: '',
-    horarioAgendamentoFim: ''
+    horarioAgendamentoFim: '',
+    valorAgendamento: ''
   }
 
   enderecoServico: EnderecoServico = {
@@ -189,7 +190,8 @@ export class ReservaComponent implements OnInit {
     this.agendamento.servico = this.servico;
     this.agendamento.cliente = this.cliente;
     this.agendamento.atividadesAgendadas = this.atividades.filter((atividade, index) => valoresAtividades[index]);;
-
+    this.agendamento.valorAgendamento = this.valorAgendamento
+    
     this.agendamentoService.add(this.agendamento).subscribe(novoAgendamento => {
 
       this.salvarEndereco(novoAgendamento);
