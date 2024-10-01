@@ -45,7 +45,7 @@ const routes: Routes = [
   { path: 'pesquisar', component: PesquisarComponent },
   { path: 'reservando/:id', component:ReservandoComponent },
   { path: 'pagar/:id', component: PagarComponent },
-  { path: 'resumo-reserva', component: ResumoReservaComponent },  
+  { path: 'resumo-reserva/:id', component: ResumoReservaComponent },  
   { path: 'tela-inicial-logado', component: TelaInicialLogadoComponent },
   { path: 'cadastrar', component: CadastrarComponent },
   { path: 'hoje-prest', component: HojePrestComponent },
