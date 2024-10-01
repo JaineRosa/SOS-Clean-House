@@ -5,24 +5,23 @@ import * as bootstrap from 'bootstrap';
 import { Prestador } from '../../interface/Prestador';
 import { PrestadorService } from '../../servicos/prestador.service';
 import { Agendamento } from '../../interface/Agendamento';
+import { AgendamentoService } from '../../servicos/agendamento.service';
 @Component({
   selector: 'app-resumo',
   templateUrl: './resumo.component.html',
   styleUrl: './resumo.component.scss'
 })
-export class ResumoComponent implements OnInit {
+export class ResumoComponent {
 
   @Input()
   agendamento!: Agendamento;
 
-  prestador: Prestador = {} as Prestador;
-
-  constructor(private router: Router, private prestadorService: PrestadorService) {}
+  constructor(private router: Router, private agendamentoService: AgendamentoService ) {}
 
   ngOnInit(): void {
     
-    
   }
+ 
 
   showToast(): void {
     const toastElement = document.getElementById('cancelarToast');

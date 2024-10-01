@@ -24,13 +24,11 @@
         <div class="form-group">
 
             <div class="d-flex">
-                <select class="form-control  me-2 custom-select" [(ngModel)]="agendamento.horarioAgendamento">
+                <select class="form-control  me-2 custom-select" [(ngModel)]="agendamento.horarioAgendamento" (ngModelChange)="onStartTimeChange($event)">
                     <option value="" disabled selected hidden>Selecione o Horário Início</option>
-                    <option value="5:00">5:00</option>
-                    <option value="6:00">6:00</option>
-                    <option value="7:00">7:00</option>
-                </select>
-                <input class="form-control" id="end-time" placeholder="Horário Término" type="text" />
+                    <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+                    </select>
+                <input class="form-control" id="end-time" placeholder="Horário Término" type="text" [(ngModel)]="agendamento.horarioAgendamentoFim" readonly />
             </div>
         </div>
         <div class="form-group">

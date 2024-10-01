@@ -219,6 +219,7 @@ export class CadastroServicoPrestComponent implements OnInit {
 			this.horarioService.create(this.horario).subscribe((response) => {
 
 				console.log("deu    certou  11111111");
+				this.router.navigate(['/anuncio']);
 			}, (error) => {
 				console.error("NAOOO11111");
 				// show error message

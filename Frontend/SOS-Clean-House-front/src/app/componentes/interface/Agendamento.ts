@@ -9,6 +9,7 @@ export interface Agendamento {
     status: boolean;
     dataAgendamento: Date;
     horarioAgendamento: string;
+    horarioAgendamentoFim: string;
     dataServico: Date;
     enderecoServico: EnderecoServico;
     servico: Servico;

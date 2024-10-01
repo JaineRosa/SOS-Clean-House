@@ -27,7 +27,8 @@ import { ClienteService } from '../../servicos/cliente.service';
 export class ReservaComponent implements OnInit {
 
   atividades: string[] = [];
-  selectedPeriod: string = 'Manhã';
+  selectedPeriod: string = '';
+  availableTimes: string[] = [];
   valorAgendamento: string = '';
   cliente!: Cliente;
   form: FormGroup;
@@ -42,7 +43,8 @@ export class ReservaComponent implements OnInit {
     cliente: {} as Cliente,
     prestador: {} as Prestador,
     atividadesAgendadas: [],
-    horarioAgendamento: ''
+    horarioAgendamento: '',
+    horarioAgendamentoFim: ''
   }
 
   enderecoServico: EnderecoServico = {
@@ -106,6 +108,48 @@ export class ReservaComponent implements OnInit {
   selectPeriod(period: string): void {
     this.selectedPeriod = period;
     this.setValorAgendamento();
+
+    this.selectedPeriod = period;
+    this.updateAvailableTimes();
+  }
+
+  updateAvailableTimes() {
+    switch (this.selectedPeriod) {
+      case 'Manhã':
+        this.availableTimes = ['6:00', '7:00', '8:00', '9:00'];
+        break;
+      case 'Tarde':
+        this.availableTimes = ['12:00', '13:00', '14:00', '15:00'];
+        break;
+      case 'Integral':
+        this.availableTimes = ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00'];
+        break;
+      default:
+        this.availableTimes = [];
+    }
+  }
+
+  onStartTimeChange(startTime: string) {
+    let endTime: string;
+    switch (this.selectedPeriod) {
+      case 'Manhã':
+      case 'Tarde':
+        endTime = this.addHours(startTime, 4);
+        break;
+      case 'Integral':
+        endTime = this.addHours(startTime, 9);
+        break;
+      default:
+        endTime = '';
+    }
+    this.agendamento.horarioAgendamentoFim = endTime;
+  }
+  
+  addHours(time: string, hours: number): string {
+    const [hour, minute] = time.split(':');
+    const newHour = parseInt(hour, 10) + hours;
+    const newMinute = minute;
+    return `${newHour}:${newMinute}`;
   }
 
   setValorAgendamento() {
@@ -119,13 +163,9 @@ export class ReservaComponent implements OnInit {
     }
   }
 
-  
-  setHorarioFim(){
-    
+  setHorarioFim() {
 
   }
-
-
 
   saveReserva(): void {
 
@@ -157,8 +197,6 @@ export class ReservaComponent implements OnInit {
 
     });
   }
-
-  
 
   salvarEndereco(novoAgendamento: Agendamento) {
     this.enderecoServico.enderecoAgendamento = novoAgendamento;
