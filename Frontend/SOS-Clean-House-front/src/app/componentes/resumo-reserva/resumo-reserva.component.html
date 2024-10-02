@@ -1,2 +1,3 @@
 
-<app-resumo [agendamento]="novoAgendamento"></app-resumo>
+<app-resumo *ngFor="let agendamento of listaAgendamentos"
+[agendamento]="agendamento"></app-resumo>

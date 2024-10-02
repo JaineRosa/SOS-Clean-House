@@ -59,6 +59,7 @@ const routes: Routes = [
   { path: 'perfil-sair-prest', component: PerfilSairPrestComponent },
   { path: 'perfil-cliente', component: PerfilClienteComponent},
   { path: 'chat', component: ChatComponent},
+  { path: 'resumo-reserva', component: ResumoReservaComponent },
 
 ];
 

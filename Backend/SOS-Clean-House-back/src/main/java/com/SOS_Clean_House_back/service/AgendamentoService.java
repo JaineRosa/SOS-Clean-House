@@ -13,20 +13,23 @@ public class AgendamentoService {
     @Autowired
     AgendamentoRepository agendamentoRepository;
 
-    public List<Agendamento> findAll(){
+    public List<Agendamento> findAll() {
         return agendamentoRepository.findAll();
     }
 
-    public Agendamento findById(Integer id){
+    public Agendamento findById(Integer id) {
         return agendamentoRepository.findById(id).orElse(null);
     }
 
-    public Agendamento save(Agendamento agendamento){
+    public Agendamento save(Agendamento agendamento) {
         return agendamentoRepository.save(agendamento);
     }
 
-    public void delete(Agendamento agendamento){
+    public void delete(Agendamento agendamento) {
         agendamentoRepository.delete(agendamento);
     }
-    
+
+    public List<Agendamento> getAgendamentosByCliente(Integer clienteId) {
+        return agendamentoRepository.findByClienteId(clienteId);
+    }
 }

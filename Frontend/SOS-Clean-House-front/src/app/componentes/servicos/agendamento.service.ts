@@ -37,4 +37,8 @@ export class AgendamentoService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  getAgendamentosByCliente(clienteId: string | null): Observable<Agendamento[]> {
+    return this.http.get<Agendamento[]>(`${this.apiUrl}/cliente/${clienteId}`);
+  }
 }

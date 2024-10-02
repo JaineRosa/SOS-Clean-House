@@ -16,30 +16,34 @@ public class AgendamentoController {
     AgendamentoService agendamentoService;
 
     @GetMapping
-    public ResponseEntity<List<Agendamento>> findAll(){
+    public ResponseEntity<List<Agendamento>> findAll() {
         return ResponseEntity.ok(agendamentoService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Agendamento> findById(@PathVariable Integer id){
-        return  ResponseEntity.ok(agendamentoService.findById(id));
+    public ResponseEntity<Agendamento> findById(@PathVariable Integer id) {
+        return ResponseEntity.ok(agendamentoService.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Agendamento> create(@RequestBody Agendamento agendamento){
+    public ResponseEntity<Agendamento> create(@RequestBody Agendamento agendamento) {
         return ResponseEntity.ok(agendamentoService.save(agendamento));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Agendamento> update(@RequestBody Agendamento agendamento){
+    public ResponseEntity<Agendamento> update(@RequestBody Agendamento agendamento) {
         return ResponseEntity.ok(agendamentoService.save(agendamento));
     }
 
     @DeleteMapping("/{id}")
-    public  ResponseEntity<Agendamento> delete(@PathVariable Integer id){
+    public ResponseEntity<Agendamento> delete(@PathVariable Integer id) {
         Agendamento agendamento = agendamentoService.findById(id);
         agendamentoService.delete(agendamento);
         return ResponseEntity.ok(agendamento);
     }
-    
+
+    @GetMapping("/cliente/{clienteId}")
+    public List<Agendamento> getAgendamentosByCliente(@PathVariable Integer clienteId) {
+        return agendamentoService.getAgendamentosByCliente(clienteId);
+    }
 }

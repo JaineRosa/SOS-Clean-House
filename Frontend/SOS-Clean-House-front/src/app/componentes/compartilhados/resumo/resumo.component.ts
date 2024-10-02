@@ -7,6 +7,7 @@ import { PrestadorService } from '../../servicos/prestador.service';
 import { Agendamento } from '../../interface/Agendamento';
 import { AgendamentoService } from '../../servicos/agendamento.service';
 import { EnderecoServicoService } from '../../servicos/endereco-servico.service';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-resumo',
   templateUrl: './resumo.component.html',
@@ -20,7 +21,7 @@ export class ResumoComponent {
   constructor(private router: Router, private agendamentoService: AgendamentoService, private enderecoservicoService: EnderecoServicoService) { }
 
   ngOnInit(): void {
-
+    
   }
 
 
