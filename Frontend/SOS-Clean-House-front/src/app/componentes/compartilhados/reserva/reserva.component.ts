@@ -164,9 +164,6 @@ export class ReservaComponent implements OnInit {
     }
   }
 
-  setHorarioFim() {
-
-  }
 
   saveReserva(): void {
 

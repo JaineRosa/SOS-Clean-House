@@ -73,14 +73,14 @@ export class CadastroServicoPrestComponent implements OnInit {
 		valorDiario8H: '',
 		tempoReserva: '',
 		observacoes: '',
-		horario: {} as Horario,
 		agendamento: {} as Agendamento,
 		enderecoServico: {} as EnderecoServico,
 		agendamentosRelacionados: [],
 		servico: '',
 		diasDaSemana: [],
 		atividades: [],
-		prestador: {} as Prestador
+		prestador: {} as Prestador,
+		horarios: []
 	}
 
 	horario: Horario = {
@@ -217,9 +217,8 @@ export class CadastroServicoPrestComponent implements OnInit {
 			console.log("deu    certou ");
 			this.horario.servico = response;
 			this.horarioService.create(this.horario).subscribe((response) => {
-
-				console.log("deu    certou  11111111");
 				this.router.navigate(['/anuncio']);
+				console.log("deu    certou  11111111");
 			}, (error) => {
 				console.error("NAOOO11111");
 				// show error message

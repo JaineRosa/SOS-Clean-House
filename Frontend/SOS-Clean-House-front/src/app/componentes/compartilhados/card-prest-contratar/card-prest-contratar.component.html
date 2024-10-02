@@ -1,28 +1,28 @@
-
-    <div class="container">
-      <div class="profile-card">
-       <h4>
-        <strong>
-         Profissional: {{servico.prestador?.nomeCompleto}}
-        </strong>
-      </h4>
-       <p>
-        {{servico.prestador.tempoExperiencia}} anos de experiência
-       </p>
-       <img alt="Profile picture of Juliana Santos" height="100" src="../../../../assets/img/perfil.jpg" width="100"/>
-       <p>
-        {{servico.servico}}
-       </p>
-       <p>
-        Valor Diária: R$ {{servico.valorDiario4H}} a R$ {{servico.valorDiario8H}}
-       </p>
-       <p>
-        Horários Disponíveis: {{servico.horario?.horarioInicio}} às {{servico.horario?.horarioInicio}}
-       </p>
-       <p>
-        Atividades Desenvolvidas: {{servico.atividades}}
-       </p>
-       <p>
-        Tempo para a reserva: Reservas com {{servico.tempoReserva}} de antecedência.
-       </p>
-      </div>
+<div class="container">
+  <div class="profile-card">
+    <h4>
+      <strong>
+        Profissional: {{servico.prestador?.nomeCompleto}}
+      </strong>
+    </h4>
+    <p>
+      {{servico.prestador.tempoExperiencia}} anos de experiência
+    </p>
+    <img alt="Profile picture of Juliana Santos" height="100" src="../../../../assets/img/perfil.jpg" width="100" />
+    <p>
+      {{servico.servico}}
+    </p>
+    <p>
+      Valor Diária: R$ {{servico.valorDiario4H}} a R$ {{servico.valorDiario8H}}
+    </p>
+    <p>
+      Horários Disponíveis: {{servico.horarios[0].horarioInicio}} às {{servico.horarios[0].horarioFim}}
+    </p>
+    <p>
+      Atividades Desenvolvidas: {{servico.atividades}}
+    </p>
+    <p>
+      Tempo para a reserva: Reservas com {{servico.tempoReserva}} de antecedência.
+    </p>
+  </div>
+</div>

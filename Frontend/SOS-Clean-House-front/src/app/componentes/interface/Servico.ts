@@ -12,7 +12,7 @@ export interface Servico {
   diasDaSemana: string[];
   atividades: string[];
   prestador: Prestador;
-  horario: Horario;
+  horarios: Horario[];
   agendamento?: Agendamento;
   enderecoServico?: EnderecoServico;
   agendamentosRelacionados?: Agendamento[];

@@ -10,11 +10,11 @@
                     </div>
                     <div class="form-group col-12">
                         <label for="email">Email:</label>
-                        <input type="email" class="form-control rounded-input" id="email" name="email" [readonly]="!isEdicao">
+                        <input type="email" class="form-control rounded-input" id="email" name="email" [readonly]="!isEdicao"  [(ngModel)]="cliente.email">
                     </div>
                     <div class="form-group col-12">
                         <label for="endereco">Endereço:</label>
-                        <input type="text" class="form-control rounded-input" id="endereco" name="endereco" [readonly]="!isEdicao">
+                        <input type="text" class="form-control rounded-input" id="endereco" name="endereco" [readonly]="!isEdicao"  [(ngModel)]="cliente.endereco">
                     </div>
 
                 </div>
@@ -29,21 +29,21 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="telefone">Telefone:</label>
-                    <input type="text" class="form-control rounded-input" id="telefone" name="telefone" [readonly]="!isEdicao">
+                    <input type="text" class="form-control rounded-input" id="telefone" name="telefone" [readonly]="!isEdicao"  [(ngModel)]="cliente.telefone">
                 </div>
                 <div class="form-group col-md-6 ">
                     <label for="data-nascimento">Data de Nascimento:</label>
-                    <input type="date" class="form-control rounded-input" id="data-nascimento" name="data-nascimento" [readonly]="!isEdicao">
+                    <input type="date" class="form-control rounded-input" id="data-nascimento" name="data-nascimento" [readonly]="!isEdicao"  [(ngModel)]="cliente.dataNascimento">
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="cpf">CPF:</label>
-                    <input type="text" class="form-control rounded-input" id="cpf" name="cpf" [readonly]="!isEdicao">
+                    <input type="text" class="form-control rounded-input" id="cpf" name="cpf" [readonly]="!isEdicao"  [(ngModel)]="cliente.cpf">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="sexo">Sexo:</label>
-                    <input type="text" class="form-control rounded-input" id="sexo" name="sexo" [readonly]="!isEdicao">
+                    <input type="text" class="form-control rounded-input" id="sexo" name="sexo" [readonly]="!isEdicao"  [(ngModel)]="cliente.sexo">
                 </div>
             </div>
 
@@ -57,7 +57,8 @@
                         data-bs-target="#creditCardModal">Cartão Final 0000</button>
                 </div>
                 <div class="form-group col-6 ">
-                    <button type="button" class="submit-button" id="liveToastBtn">Editar</button>
+                    <button type="button" class="submit-button" *ngIf="!isEdicao" (click)="enableEditing()">Editar</button>
+                    <button type="button" class="submit-button" *ngIf="isEdicao" (click)="salvar()">Salvar</button>
                 </div>
             </div>
         </form>
@@ -78,7 +79,7 @@
     <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
         <button type="button" class="btn-close btn-close-white a " data-bs-dismiss="toast" aria-label="Close"></button>
         <div class="toast-body">
-            Cadastro concluído com sucesso!
+            Cadastro Finalizado com sucesso!
 
         </div>
     </div>
