@@ -37,4 +37,9 @@ export class ServicoService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  getServicosByPrestador(prestadorId: string | null): Observable<Servico[]> {
+    return this.http.get<Servico[]>(`${this.apiUrl}/prestador/${prestadorId}`);
+  }
+  
 }

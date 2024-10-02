@@ -41,5 +41,10 @@ public class ServicoController {
         servicoService.delete(servico);
         return ResponseEntity.ok(servico);
     }
+
+    @GetMapping("/prestador/{prestadorId}")
+    public List<Servico> getServicosByPrestador(@PathVariable Integer prestadorId) {
+        return servicoService.getServicosByPrestador(prestadorId);
+    }
     
 }

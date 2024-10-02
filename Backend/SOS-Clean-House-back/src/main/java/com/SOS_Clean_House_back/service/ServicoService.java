@@ -28,5 +28,8 @@ public class ServicoService {
     public void delete(Servico servico){
         servicoRepository.delete(servico);
     }
-    
+
+    public List<Servico> getServicosByPrestador(Integer prestadorId) {
+        return servicoRepository.findByPrestadorId(prestadorId);
+    }
 }
