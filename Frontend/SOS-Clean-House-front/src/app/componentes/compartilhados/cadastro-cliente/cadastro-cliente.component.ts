@@ -14,8 +14,34 @@ import { Router } from '@angular/router';
 })
 export class CadastroClienteComponent implements OnInit {
   
+  selectedFile!: File;
+  profileImage: any;
 
   constructor (private clienteService: ClienteService, private router: Router) { };
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.cliente.fotoPerfil = event.target.files[0];
+  }
+
+  uploadImage() {
+    this.clienteService.uploadProfileImage(this.cliente.id, this.selectedFile).subscribe(
+      response => {
+        this.getProfileImage(this.cliente.id);
+      },
+      error => console.error(error)
+    );
+  }
+
+  private getProfileImage(id: number){
+    this.clienteService.getProfileImage(id).subscribe(
+      (image: Blob) => {
+        const urlCreator = window.URL || window.webkitURL;
+        this.profileImage = urlCreator.createObjectURL(image);
+      },
+      error => console.error(error)
+    );
+  }
 
   saveCliente() {
     this.clienteService.create(this.cliente).subscribe((response) => {

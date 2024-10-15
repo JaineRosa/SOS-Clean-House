@@ -4,8 +4,11 @@ import com.SOS_Clean_House_back.model.Usuario;
 import com.SOS_Clean_House_back.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -28,5 +31,5 @@ public class UsuarioService {
     public void delete(Usuario usuario){
         usuarioRepository.delete(usuario);
     }
-    
+
 }

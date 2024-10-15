@@ -39,4 +39,15 @@ export class ClienteService {
   validarLogin(credenciais: any): Observable<Cliente> {
     return this.http.post<Cliente>(`${this.apiUrl}/login`, credenciais);
   }
+
+  uploadProfileImage(userId: number, imagem: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('imagem', imagem);
+
+    return this.http.post(`${this.apiUrl}/${userId}/upload`, formData, { responseType: 'text' });
+  }
+
+  getProfileImage(userId: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/${userId}/imagem-perfil`, { responseType: 'blob' });
+  }
 }

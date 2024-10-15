@@ -48,10 +48,8 @@
             <div class="form-group">
                 <div class="row mb-3">
                     <div class="col mt-3">
-                        <input type="text" class="form-control rounded-input" placeholder="Foto de perfil:" [(ngModel)]="cliente.fotoPerfil">
-                    </div>
-                    <div class="col-auto mt-3">
-                        <button type="button" class="btn btn-outline-primary add-card-button">Procurar</button>
+                        <input type="file" class="form-control rounded-input" placeholder="Foto de perfil:" (change)="onFileSelected($event)" [(ngModel)]="cliente.fotoPerfil">      
+                        <button (click)="uploadImage()" type="button" class="btn btn-outline-primary add-card-button">Procurar</button>
                     </div>
                 </div>
 

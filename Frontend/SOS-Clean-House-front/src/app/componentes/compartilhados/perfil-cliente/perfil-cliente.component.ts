@@ -28,11 +28,21 @@ export class PerfilClienteComponent implements OnInit {
   }
   constructor(private clienteService: ClienteService) { }
   isEdicao: boolean = false;
+  selectedFile!: File;
+  profileImage: any;
 
   ngOnInit(): void {
 
     const clienteId = sessionStorage.getItem('cliente-id');
 
+    
+      const id = Number(sessionStorage.getItem('usuario-id'));
+      this.clienteService.findById(id).subscribe(response => {
+        this.cliente = response;
+        this.getProfileImage(this.cliente.id);
+      });
+     
+    
 
     if (clienteId) {
       // Chamar o serviço para buscar o prestador pelo ID
@@ -73,6 +83,15 @@ export class PerfilClienteComponent implements OnInit {
     this.isEdicao = true;
   }
 
+  private getProfileImage(id: number){
+    this.clienteService.getProfileImage(id).subscribe(
+      (image: Blob) => {
+        const urlCreator = window.URL || window.webkitURL;
+        this.profileImage = urlCreator.createObjectURL(image);
+      },
+      error => console.error(error)
+    );
+  }
 
   salvar() {
 

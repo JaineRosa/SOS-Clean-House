@@ -39,6 +39,10 @@ export class ResumoReservaComponent {
 
     const clienteId = sessionStorage.getItem('cliente-id');
 
+    this.agendamentoService.getAgendamentosByCliente(clienteId).subscribe(agendamentos => {
+      console.log(agendamentos);
+      this.listaAgendamentos = agendamentos;
+    });
 
     if (clienteId) {
       // Chamar o serviço para buscar o prestador pelo ID
@@ -50,16 +54,15 @@ export class ResumoReservaComponent {
           console.error('Erro ao buscar prestador:', error);
         }
       );
+
+
     } else {
       console.error("Prestador ID não encontrado no sessionStorage");
       return;
     }
 
 
-    this.agendamentoService.getAgendamentosByCliente(clienteId).subscribe(agendamentos => {
-      console.log(agendamentos);
-      this.listaAgendamentos = agendamentos;
-    });
+   
 
   }
 
